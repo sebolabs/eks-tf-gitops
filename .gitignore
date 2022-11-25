@@ -1,9 +1,28 @@
+# IDE
+.idea
+.vscode
+
+# MacOSX
+.DS_Store
+
 # Local .terraform directories
 **/.terraform/*
+
+# Lock file
+**/.terraform.lock.hcl
+
+# TFScaffold temp backend
+**/backend_tfscaffold.tf
+
+# Plugin cache
+**/plugin-cache/*
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+# TFenv
+**/components/**/tfenv_download*
 
 # Crash log files
 crash.log
