@@ -1,5 +1,5 @@
 module "eks" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.17.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.18.0"
 
   tags = tomap({ Name = local.aws_account_level_id })
 
@@ -34,7 +34,7 @@ module "eks" {
       disk_size = 30
 
       min_size     = 0
-      desired_size = 2
+      desired_size = 3
       max_size     = 10
 
       k8s_labels = {

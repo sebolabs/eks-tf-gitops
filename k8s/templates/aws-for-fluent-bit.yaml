@@ -33,7 +33,7 @@ spec:
         value: {{ .Values.region }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: aws-for-fluent-bit
+    namespace: {{ .Values.namespace }}
   syncPolicy:
     automated:
       prune: true

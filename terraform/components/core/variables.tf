@@ -20,9 +20,9 @@ variable "component" {
   default     = "core"
 }
 
-variable "tf_state_bucket_name" {
+variable "tf_state_bucket_name_prefix" {
   type        = string
-  description = "Terraform state bucket name"
+  description = "Terraform state bucket name prefix"
 }
 
 variable "aws_account_id" {

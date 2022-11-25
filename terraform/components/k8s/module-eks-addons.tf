@@ -1,5 +1,5 @@
 module "eks_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.17.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.18.0"
 
   depends_on = [module.eks, aws_security_group.argocd_alb_public_access_whitelist]
 
@@ -21,8 +21,7 @@ module "eks_addons" {
   enable_amazon_eks_coredns = true
   amazon_eks_coredns_config = { most_recent = true }
 
-  enable_amazon_eks_aws_ebs_csi_driver = true
-  amazon_eks_aws_ebs_csi_driver_config = { most_recent = true }
+  enable_amazon_eks_aws_ebs_csi_driver = false
 
   # ADD-ONS
   enable_argocd = true
@@ -53,18 +52,37 @@ module "eks_addons" {
 
   argocd_manage_add_ons = true
 
+  ## aws-cloudwatch-metrics
+  enable_aws_cloudwatch_metrics      = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
+  aws_cloudwatch_metrics_helm_config = { namespace = var.k8s_add_ons_default_namespace }
+
+  ## aws-efs-csi-driver
+  enable_aws_efs_csi_driver      = var.k8s_add_ons["enable_aws_efs_csi_driver"]
+  aws_efs_csi_driver_helm_config = { namespace = var.k8s_add_ons_default_namespace }
+
   ## aws-for-fluentbit
   enable_aws_for_fluentbit                 = var.k8s_add_ons["enable_aws_for_fluentbit"]
+  aws_for_fluentbit_helm_config            = { namespace = var.k8s_add_ons_default_namespace }
   aws_for_fluentbit_cw_log_group_name      = "/aws/eks/${module.eks.eks_cluster_id}/fluentbit"
   aws_for_fluentbit_cw_log_group_retention = 3
 
   ## aws-load-balancer-controller
-  enable_aws_load_balancer_controller = var.k8s_add_ons["enable_aws_load_balancer_controller"]
+  enable_aws_load_balancer_controller      = var.k8s_add_ons["enable_aws_load_balancer_controller"]
+  aws_load_balancer_controller_helm_config = { namespace = var.k8s_add_ons_default_namespace }
 
   ## cluster-autoscaler
-  enable_cluster_autoscaler = var.k8s_add_ons["enable_cluster_autoscaler"]
+  enable_cluster_autoscaler      = var.k8s_add_ons["enable_cluster_autoscaler"]
+  cluster_autoscaler_helm_config = { namespace = var.k8s_add_ons_default_namespace }
+
+  ## csi-secrets-store-provider-aws
+  # thre's nothing to pre-configure
 
   ## external-dns
   enable_external_dns            = var.k8s_add_ons["enable_external_dns"]
+  external_dns_helm_config       = { namespace = var.k8s_add_ons_default_namespace }
   external_dns_route53_zone_arns = [data.aws_route53_zone.public.arn]
+
+  ## metrics-server
+  enable_metrics_server      = var.k8s_add_ons["enable_metrics_server"]
+  metrics_server_helm_config = { namespace = var.k8s_add_ons_default_namespace }
 }

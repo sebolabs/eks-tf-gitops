@@ -20,9 +20,9 @@ variable "component" {
   default     = "k8s"
 }
 
-variable "tf_state_bucket_name" {
+variable "tf_state_bucket_name_prefix" {
   type        = string
-  description = "Terraform state bucket name"
+  description = "Terraform state bucket name prefix"
 }
 
 variable "aws_account_id" {
@@ -77,4 +77,10 @@ variable "logs_s3_bucket_arn" {
 variable "k8s_add_ons" {
   type        = map(bool)
   description = "A map of K8s add-ons to be enabled or disabled"
+}
+
+variable "k8s_add_ons_default_namespace" {
+  type        = string
+  description = "The K8s namespace where all add-ons should be deployed to by default"
+  default     = "kube-system"
 }

@@ -2,7 +2,6 @@
 TFScaffold-like Terraform code structure.
 
 ## STRUCTURE
-
 ### BIN
 The `terraform.sh` script takes care of computing all the things to run Terraform consistently and without having to provide static backend configuration.
 
@@ -30,9 +29,15 @@ Reusable Terraform modules.
 Examples:
 
 ```
+# account
 $ bin/terraform.sh -p eks-tf-gitops -b eks-tf-gitops-tfstate -r eu-central-1 -e test -c account -a plan/apply
 
+# core
 $ bin/terraform.sh -p eks-tf-gitops -b eks-tf-gitops-tfstate -r eu-central-1 -e test -c core -a plan/apply
 
+# k8s
 $ bin/terraform.sh -p eks-tf-gitops -b eks-tf-gitops-tfstate -r eu-central-1 -e test -c k8s -a plan/apply
+
+# k8s with the use of the `local.tfvars` file
+$ bin/terraform.sh -p eks-tf-gitops -b eks-tf-gitops-tfstate -r eu-central-1 -e test -c k8s -a plan/apply -- -var-file="../../etc/local.tfvars"
 ```
