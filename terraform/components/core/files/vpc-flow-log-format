@@ -1,0 +1,2 @@
+
+${account-id} ${region} ${vpc-id} ${subnet-id} ${instance-id} ${interface-id} ${flow-direction} ${traffic-path} ${srcaddr} ${pkt-srcaddr} ${pkt-src-aws-service} ${srcport} ${dstaddr} ${pkt-dstaddr} ${pkt-dst-aws-service} ${dstport} ${protocol} ${tcp-flags} ${packets} ${bytes} ${start} ${end} ${action} ${log-status}
