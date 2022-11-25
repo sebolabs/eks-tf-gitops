@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  tf-bash:
+    image: tf-executor
+    working_dir: /opt/tf-code
+    entrypoint: /opt/tf-bash.sh
+    volumes:
+      - ${TF_WORKING_DIR}:/opt/tf-code
+    environment:
+      - AWS_REGION=${AWS_REGION:-eu-central-1}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_MFA_EXPIRY=${AWS_MFA_EXPIRY:-null}
+      - AWS_OUTPUT=json
