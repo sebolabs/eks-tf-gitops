@@ -48,6 +48,15 @@ module "eks_addons" {
       values             = {}
       add_on_application = true
     }
+
+    dev-opc = {
+      namespace          = "argocd"
+      repo_url           = "https://github.com/sebolabs/eks-tf-gitops.git"
+      target_revision    = "release-1.2.0"
+      path               = "k8s/apps/opc"
+      values             = { environment = "dev" }
+      add_on_application = true
+    }
   }
 
   argocd_manage_add_ons = true

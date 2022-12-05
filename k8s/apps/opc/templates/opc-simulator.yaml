@@ -1,0 +1,33 @@
+{{- if and (.Values.opcSimulator) (.Values.opcSimulator.enabled) -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.environment }}-opc-simulator
+  namespace: {{ .Values.common.argocdNamespace }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.common.project }}
+  source:
+    repoURL: {{ .Values.common.git.repoUrl }}
+    path: helm-charts/opc/opc-simulator
+    targetRevision: {{ .Values.common.git.targetRevision }}
+    helm:
+      valueFiles: |
+      - values.yaml
+      - values-{{ .Values.environment }}.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ .Values.environment }}-opc
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated: # TODO: make conditional
+      prune: true
+    retry:
+      limit: 1
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 1m
+{{- end -}}
