@@ -7,13 +7,13 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: {{ .Values.common.project }}
+  project: {{ .Values.common.project }}-{{ .Values.environment }}
   source:
     repoURL: {{ .Values.common.git.repoUrl }}
     path: helm-charts/opc/opc-simulator
     targetRevision: {{ .Values.common.git.targetRevision }}
     helm:
-      valueFiles: |
+      valueFiles:
       - values.yaml
       - values-{{ .Values.environment }}.yaml
   destination:
