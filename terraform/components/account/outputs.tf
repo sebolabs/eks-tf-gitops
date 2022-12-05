@@ -9,3 +9,7 @@ output "s3_bucket_logs_arn" {
 output "github_actions_iam_role_arn" {
   value = aws_iam_role.github_actions.arn
 }
+
+output "s3_bucket_athena_bucket_name" {
+  value = module.s3_bucket_athena.bucket.bucket
+}

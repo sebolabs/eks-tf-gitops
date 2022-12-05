@@ -1,6 +1,6 @@
 apiVersion: v2
-name: aws-load-balancer-controller
-description: A Helm chart for installing AWS Load Balancer Controller
+name: aws-efs-csi-driver
+description: A Helm chart for installing AWS EFS CSI driver
 
 # Application charts are a collection of templates that can be packaged into versioned archives
 # to be deployed.
@@ -8,13 +8,13 @@ type: application
 
 # The chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 1.0.0
+version: 0.1.0
 
 # Version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
 appVersion: "1.0"
 
 dependencies:
-- name: aws-load-balancer-controller
-  version: 1.4.6
-  repository: https://aws.github.io/eks-charts
+- name: aws-efs-csi-driver
+  version: 2.3.0
+  repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/

@@ -25,7 +25,7 @@ spec:
         value: {{ .Values.clusterName }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
+    namespace: {{ .Values.namespace }}
   syncPolicy:
     automated:
       prune: true

@@ -20,9 +20,9 @@ variable "component" {
   default     = "account"
 }
 
-variable "tf_state_bucket_name" {
+variable "tf_state_bucket_name_prefix" {
   type        = string
-  description = "Terraform state bucket name"
+  description = "Terraform state bucket name prefix"
 }
 
 variable "aws_account_id" {
@@ -34,7 +34,6 @@ variable "aws_account_id" {
 variable "github_actions_oidc_provider_exists" {
   type        = bool
   description = "Wheather the OIDC provider for GitHub is already configured within the AWS account"
-
 }
 
 variable "github_actions_linked_repo" {

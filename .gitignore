@@ -33,6 +33,11 @@ crash.log
 #
 # example.tfvars
 
+# local.tfvars
+# For overriding values temporarily when running TF locally
+# or when the value in the pipeline is provided in a different way.
+**/local.tfvars
+
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
 override.tf

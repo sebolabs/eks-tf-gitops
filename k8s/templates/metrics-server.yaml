@@ -1,8 +1,8 @@
-{{- if and (.Values.externalDns) (.Values.externalDns.enable) -}}
+{{- if and (.Values.metricsServer) (.Values.metricsServer.enable) -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns
+  name: metrics-server
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,19 +10,12 @@ spec:
   project: {{ .Values.project }}
   source:
     repoURL: {{ .Values.repoUrl }}
-    path: k8s/add-ons/external-dns
+    path: k8s/add-ons/metrics-server
     targetRevision: {{ .Values.targetRevision }}
     helm:
       values: |
-        external-dns:
-        {{- toYaml .Values.externalDns | nindent 10 }}
-      parameters:
-      - name: external-dns.aws.region
-        value: {{ .Values.region }}
-      - name: external-dns.serviceAccount.name
-        value: {{ .Values.externalDns.serviceAccountName }}
-      - name: external-dns.zoneIdFilters[0]
-        value: {{ .Values.externalDns.zoneIdFilter }}
+        metrics-server:
+        {{- toYaml .Values.metricsServer | nindent 10 }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.namespace }}
