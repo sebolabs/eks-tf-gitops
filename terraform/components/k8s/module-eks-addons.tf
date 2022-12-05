@@ -45,7 +45,6 @@ module "eks_addons" {
       repo_url           = var.argocd_k8s_addons_git_repo["url"]
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
-      values             = {}
       add_on_application = true
     }
 
@@ -54,7 +53,7 @@ module "eks_addons" {
       namespace          = "argocd"
       repo_url           = "https://github.com/sebolabs/eks-tf-gitops.git"
       target_revision    = "release-1-2-0"
-      path               = "apps/opc"
+      path               = "k8s/apps/opc"
       values             = { environment = "dev" }
       add_on_application = false
     }
