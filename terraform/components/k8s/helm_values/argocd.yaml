@@ -63,3 +63,7 @@ repoServer:
 
 applicationSet:
   replicaCount: 2
+
+configs:
+  params:
+    application.namespaces: "*-test"
