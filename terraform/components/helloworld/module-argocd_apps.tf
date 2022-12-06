@@ -14,7 +14,10 @@ module "argocd_app_hello_world" {
 
   # Note: this is to pass the environemtn value
   applications = {
-    for key, app in var.hello_world_argocd_apps : key =>
-    merge({ values = { environment = var.environment }}, app)
+    for app, app_config in var.hello_world_argocd_apps : app =>
+    merge({
+      # namespace = "${app}-${var.environment}"
+      values    = { environment = var.environment }
+    }, app_config)
   }
 }

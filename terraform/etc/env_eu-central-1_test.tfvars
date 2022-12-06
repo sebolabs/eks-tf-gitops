@@ -51,6 +51,7 @@ logs_s3_bucket_arn = "???" # TODO: provide
 hello_world_argocd_apps = {
   test-hello-world = {
     project         = "sebolabs-test" # must be created manually
+    namespace       = "test-hello-world"
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops.git"
     target_revision = "release-1-2-0"
     path            = "k8s/apps/hello-world"

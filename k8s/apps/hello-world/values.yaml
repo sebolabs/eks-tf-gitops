@@ -1,6 +1,6 @@
 common:
   project: sebolabs
-  argocdNamespace: argocd
+  # argocdNamespace: argocd
 
   git:
     repoUrl: https://github.com/sebolabs/eks-tf-gitops-k8s

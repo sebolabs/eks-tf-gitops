@@ -4,10 +4,16 @@ resource "helm_release" "argocd_application" {
   name      = each.key
   chart     = "${path.module}/argocd-application/helm"
   version   = "1.0.0"
-  namespace = local.argocd_namespace
+  namespace = each.value.namespace #
 
   set {
     name  = "name"
+    value = each.key
+    type  = "string"
+  }
+
+  set {
+    name  = "namespace"
     value = each.key
     type  = "string"
   }
@@ -74,7 +80,7 @@ resource "kubernetes_secret" "argocd_gitops" {
 
   metadata {
     name      = "${each.key}-repo-secret"
-    namespace = local.argocd_namespace
+    namespace = each.value.namespace #
     labels    = { "argocd.argoproj.io/secret-type" : "repository" }
   }
 

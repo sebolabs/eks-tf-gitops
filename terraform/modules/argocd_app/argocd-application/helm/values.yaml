@@ -1,6 +1,9 @@
 # Application Name
 name: ""
 
+# Kubernetes namespace
+namespace: ""
+
 # The ArgoCD Project the Application belongs to.
 project: "default"
 
@@ -25,7 +28,3 @@ destination:
   server: "https://kubernetes.default.svc"
 
 ignoreDifferences:
-#  - group: argoproj.io
-#    kind: Application
-#    jsonPointers:
-#      - /spec/syncPolicy

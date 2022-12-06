@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ .Values.environment }}-hello-world
-  namespace: {{ .Values.common.argocdNamespace }}
+  namespace: {{ .Values.namespace }} # 
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -18,7 +18,7 @@ spec:
       - values-{{ .Values.environment }}.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.environment }}-hello-world
+    namespace: {{ .Values.namespace }} # 
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

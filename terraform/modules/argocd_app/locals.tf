@@ -1,8 +1,9 @@
 locals {
-  argocd_namespace = var.argocd_namespace != null ? var.argocd_namespace : "argocd"
+  namespace = "argocd"
 
   default_helm_application = {
     type               = "helm"
+    namespace          = local.namespace
     target_revision    = "HEAD"
     destination        = "https://kubernetes.default.svc"
     project            = "default"
