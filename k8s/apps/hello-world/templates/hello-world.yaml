@@ -10,7 +10,7 @@ spec:
   project: {{ .Values.common.project }}-{{ .Values.environment }}
   source:
     repoURL: {{ .Values.common.git.repoUrl }}
-    path: helm-charts/hello-world/hello-world
+    path: helm-charts/hello-world
     targetRevision: {{ .Values.common.git.targetRevision }}
     helm:
       valueFiles:
