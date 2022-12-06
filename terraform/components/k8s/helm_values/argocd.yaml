@@ -64,6 +64,9 @@ repoServer:
 applicationSet:
   replicaCount: 2
 
+# TODO: to investigate further how to make it work
+# ISSUE: https://github.com/argoproj/argo-cd/pull/9755
+# SOURCE CODE: https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
 configs:
   params:
-    application.namespaces: "*-test"
+    application.namespaces: "test-*"
