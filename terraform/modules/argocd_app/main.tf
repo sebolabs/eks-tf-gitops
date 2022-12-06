@@ -1,5 +1,5 @@
 resource "helm_release" "argocd_application" {
-  for_each = { for k, v in var.applications : k => merge(local.default_helm_application, v) }
+  for_each = { for k, v in local.applications : k => merge(local.default_helm_application, v) }
 
   name      = each.key
   chart     = "${path.module}/argocd-application/helm"
@@ -70,7 +70,7 @@ resource "helm_release" "argocd_application" {
 
 # TODO: add support for SSM PS
 resource "kubernetes_secret" "argocd_gitops" {
-  for_each = { for k, v in var.applications : k => v if try(v.ssh_key_secret_name, null) != null }
+  for_each = { for k, v in local.applications : k => v if try(v.ssh_key_secret_name, null) != null }
 
   metadata {
     name      = "${each.key}-repo-secret"

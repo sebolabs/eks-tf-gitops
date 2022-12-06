@@ -4,6 +4,11 @@ variable "module" {
   default     = "argocd_app"
 }
 
+variable "environment" {
+  type        = string
+  description = "The environment where the app belongs to"
+}
+
 variable "argocd_namespace" {
   type        = string
   description = "The namespace an app should belong to. The 'argocd' namespace is created by default on ArgoCD install."
