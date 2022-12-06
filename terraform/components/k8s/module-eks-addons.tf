@@ -48,6 +48,7 @@ module "eks_addons" {
       add_on_application = true
     }
 
+    # TODO: move to tfvars with and merge with add-ons
     dev-opc = {
       project            = "sebolabs-dev"
       namespace          = "argocd"
