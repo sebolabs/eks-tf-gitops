@@ -1,8 +1,8 @@
-{{- if and (.Values.helloWorld) (.Values.helloWorld.enabled) -}}
+{{- if and (.Values.helloWorldSvc) (.Values.helloWorldSvc.enabled) -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.environment }}-hello-world
+  name: {{ .Values.environment }}-hello-world-svc
   namespace: {{ .Values.common.argocdNamespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,7 +10,7 @@ spec:
   project: {{ .Values.common.project }}-{{ .Values.environment }}
   source:
     repoURL: {{ .Values.common.git.repoUrl }}
-    path: helm-charts/hello-world
+    path: helm-charts/hello-world/hello-world-svc
     targetRevision: {{ .Values.common.git.targetRevision }}
     helm:
       valueFiles:
