@@ -1,0 +1,10 @@
+common:
+  project: sebolabs
+  argocdNamespace: argocd
+
+  git:
+    repoUrl: https://github.com/sebolabs/eks-tf-gitops-k8s
+    targetRevision: trying-out-things
+
+helloWorld: 
+  enabled: true
