@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ .Values.environment }}-hello-world
-  namespace: {{ .Values.namespace }} # 
+  namespace: argocd # TODO: temporary - to make it work" {{ .Values.namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
