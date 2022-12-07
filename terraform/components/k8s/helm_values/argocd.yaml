@@ -64,9 +64,10 @@ repoServer:
 applicationSet:
   replicaCount: 2
 
-# TODO: to investigate further how to make it work
-# ISSUE: https://github.com/argoproj/argo-cd/pull/9755
-# SOURCE CODE: https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
+# Note: this is to make ArgoCD recognize apps in other namesaces
+# Relevant issues:
+# ISSUE 1: https://github.com/argoproj/argo-cd/pull/9755
+# ISSUE 2: https://github.com/argoproj/argo-cd/issues/11597
 configs:
   params:
     application.namespaces: "test-*"
