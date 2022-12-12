@@ -24,7 +24,7 @@ private_subnets_cidrs = ["10.83.3.0/24", "10.83.4.0/24"]
 #
 eks_cluster_version = "1.23"
 
-argocd_helm_chart_version = "5.16.1"
+argocd_helm_chart_version = "5.16.2"
 
 argocd_k8s_addons_git_repo = { # TODO: provide
   url      = "https://github.com/sebolabs/eks-tf-gitops.git"

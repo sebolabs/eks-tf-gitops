@@ -21,6 +21,7 @@ spec:
     namespace: {{ .Values.namespace }} # 
   syncPolicy:
     syncOptions:
+    - PruneLast=true
     - CreateNamespace=true
     automated: # TODO: make conditional
       prune: true
