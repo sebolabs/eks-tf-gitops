@@ -46,14 +46,14 @@ k8s_add_ons = {
 logs_s3_bucket_arn = "???" # TODO: provide
 
 #
-# HELLO WORLD
+# STARTREK
 #
-hello_world_argocd_apps = {
-  test-hello-world = {
+startrek_argocd_apps = {
+  startrek = {
     project         = "sebolabs-test" # Note: created manually
-    namespace       = "test-hello-world"
-    repo_url        = "https://github.com/sebolabs/eks-tf-gitops.git"
-    target_revision = "release-1-2-0"
-    path            = "k8s/apps/hello-world"
+    namespace       = "test-startrek"
+    repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
+    target_revision = "trying-out-things-2apps"
+    path            = "startrek/app"
   }
 }

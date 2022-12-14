@@ -17,7 +17,7 @@ variable "environment" {
 variable "component" {
   type        = string
   description = "The TF component name"
-  default     = "helloworld"
+  default     = "startrek"
 }
 
 variable "tf_state_bucket_name_prefix" {
@@ -31,7 +31,7 @@ variable "aws_account_id" {
 }
 
 # SPECIFIC
-variable "hello_world_argocd_apps" {
+variable "startrek_argocd_apps" {
   type        = map
   description = "A map with ArgoCD applications configurations that belong to this component"
   default     = {}

@@ -16,6 +16,7 @@ spec:
       valueFiles:
       - values.yaml
       - values-{{ .Values.environment }}.yaml
+      # values
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.namespace }} # 

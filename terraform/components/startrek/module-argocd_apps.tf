@@ -4,7 +4,7 @@ module "argocd_app_hello_world" {
 
   environment = var.environment
 
-  applications = var.hello_world_argocd_apps
+  applications = var.startrek_argocd_apps
 
   k8s_context = {
     aws_caller_identity_account_id = data.aws_caller_identity.current.account_id
