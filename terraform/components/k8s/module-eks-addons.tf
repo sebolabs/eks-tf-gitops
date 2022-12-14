@@ -48,16 +48,14 @@ module "eks_addons" {
       add_on_application = true
     }
 
-    # TODO: move to tfvars with and merge with add-ons
-    dev-opc = {
-      project            = "sebolabs-dev"
-      namespace          = "argocd"
-      repo_url           = "https://github.com/sebolabs/eks-tf-gitops.git"
-      target_revision    = "release-1-2-0"
-      path               = "k8s/apps/opc"
-      values             = { environment = "dev" }
-      add_on_application = false
-    }
+    # Example of an additional app configuration
+    # dummy = {
+    #   namespace          = "bleh"
+    #   repo_url           = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
+    #   target_revision    = "HEAD"
+    #   path               = "apps/dummy"
+    #   values             = { environment = "dev" }
+    # }
   }
 
   argocd_manage_add_ons = true
