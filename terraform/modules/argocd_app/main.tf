@@ -1,3 +1,11 @@
+resource "kubernetes_namespace_v1" "main" {
+  for_each = local.applications
+
+  metadata {
+    name = each.value.namespace
+  }
+}
+
 resource "helm_release" "argocd_application" {
   for_each = { for k, v in local.applications : k => merge(local.default_helm_application, v) }
 
@@ -14,7 +22,7 @@ resource "helm_release" "argocd_application" {
 
   set {
     name  = "namespace"
-    value = each.key
+    value = each.value.namespace
     type  = "string"
   }
 
@@ -72,6 +80,8 @@ resource "helm_release" "argocd_application" {
       "ignoreDifferences" = lookup(each.value, "ignoreDifferences", [])
     })
   ]
+
+  depends_on = [kubernetes_namespace_v1.main]
 }
 
 # TODO: add support for SSM PS

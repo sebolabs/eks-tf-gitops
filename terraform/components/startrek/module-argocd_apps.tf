@@ -1,6 +1,6 @@
-module "argocd_app_hello_world" {
+module "argocd_app_startrek" {
   source = "../../modules/argocd_app"
-  count  = var.hello_world_argocd_apps != {} ? 1 : 0
+  count  = var.startrek_argocd_apps != {} ? 1 : 0
 
   environment = var.environment
 

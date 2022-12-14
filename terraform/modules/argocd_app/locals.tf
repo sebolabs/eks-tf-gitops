@@ -5,6 +5,7 @@ locals {
     for app, app_config in var.applications : app =>
     merge({
       values = {
+        project     = lookup(app_config, "project", null) != null ? app_config.project : "default"
         namespace   = lookup(app_config, "namespace", null) != null ? app_config.namespace : "argocd"
         environment = var.environment
       }
