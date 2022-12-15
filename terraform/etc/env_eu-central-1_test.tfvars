@@ -50,10 +50,10 @@ logs_s3_bucket_arn = "???" # TODO: provide
 #
 startrek_argocd_apps = {
   startrek = {
-    project         = "sebolabs-test" # Note: created manually
+    project         = "sebolabs-test" # TODO: create with code
     namespace       = "test-startrek"
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
     target_revision = "trying-out-things-2apps"
-    path            = "startrek/app"
+    path            = "startrek"
   }
 }
