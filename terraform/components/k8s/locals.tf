@@ -15,11 +15,11 @@ locals {
     var.component,
   )
 
-  default_tags = {
+  default_tags = merge(var.additional_default_tags, {
     Project     = var.project
     Environment = var.environment
     Component   = var.component
-  }
+  })
 
   # SPECIFIC
   eks_cluster_name = local.aws_account_level_id

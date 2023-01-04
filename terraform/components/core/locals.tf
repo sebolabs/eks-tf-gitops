@@ -15,11 +15,11 @@ locals {
     var.component,
   )
 
-  default_tags = {
+  default_tags = merge(var.additional_default_tags, {
     Project     = var.project
     Environment = var.environment
     Component   = var.component
-  }
+  })
 
   # SPECIFIC
   flow_log_destination_type   = var.vpc_flow_logs_s3_bucket_arn != null ? "s3" : "cloud-watch-logs"

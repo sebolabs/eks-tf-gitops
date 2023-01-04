@@ -30,6 +30,12 @@ variable "aws_account_id" {
   description = "The allowed AWS account ID to prevent you from mistakenly using an incorrect one"
 }
 
+variable "additional_default_tags" {
+  type        = map(string)
+  description = "A map with additional default tags to be applied at the AWS provider level"
+  default     = {}
+}
+
 # SPECIFIC
 variable "r53_public_hosted_zone_name" {
   type        = string

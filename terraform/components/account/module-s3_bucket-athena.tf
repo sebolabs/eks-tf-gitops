@@ -1,5 +1,6 @@
 module "s3_bucket_athena" {
   source      = "../../modules/s3_bucket"
+  count       = var.enable_athena ? 1 : 0
   bucket_name = "${local.aws_global_level_id}-athena"
 
   allow_encrypted_uploads_only = false

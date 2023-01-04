@@ -1,4 +1,6 @@
 data "aws_iam_policy_document" "lb_access_logging" {
+  count = var.enable_s3_bukcet_logs ? 1 : 0
+
   statement {
     sid = "AllowLbLogging"
 
@@ -14,12 +16,14 @@ data "aws_iam_policy_document" "lb_access_logging" {
     ]
 
     resources = [
-      "${module.s3_bucket_logs.bucket.arn}/*",
+      "${module.s3_bucket_logs[0].bucket.arn}/*",
     ]
   }
 }
 
 data "aws_iam_policy_document" "vpc_flow_logging" {
+  count = var.enable_s3_bukcet_logs ? 1 : 0
+
   statement {
     sid = "AWSLogDeliveryWrite"
 
@@ -35,7 +39,7 @@ data "aws_iam_policy_document" "vpc_flow_logging" {
     ]
 
     resources = [
-      "${module.s3_bucket_logs.bucket.arn}/*",
+      "${module.s3_bucket_logs[0].bucket.arn}/*",
     ]
 
     condition {
@@ -72,7 +76,7 @@ data "aws_iam_policy_document" "vpc_flow_logging" {
     ]
 
     resources = [
-      module.s3_bucket_logs.bucket.arn,
+      module.s3_bucket_logs[0].bucket.arn,
     ]
 
     condition {

@@ -30,6 +30,12 @@ variable "aws_account_id" {
   description = "The allowed AWS account ID to prevent you from mistakenly using an incorrect one"
 }
 
+variable "additional_default_tags" {
+  type        = map(string)
+  description = "A map with additional default tags to be applied at the AWS provider level"
+  default     = {}
+}
+
 # SPECIFIC
 variable "github_actions_oidc_provider_exists" {
   type        = bool
@@ -39,4 +45,16 @@ variable "github_actions_oidc_provider_exists" {
 variable "github_actions_linked_repo" {
   type        = string
   description = "The GitHub Actions linked repo (<orgName/repoName>) used to configure a trust condition for OIDC"
+}
+
+variable "enable_s3_bukcet_logs" {
+  type        = bool
+  description = "Wheather a dedicated S3 bucket for storing logs should be created"
+  default     = true
+}
+
+variable "enable_athena" {
+  type        = bool
+  description = "Wheather to create an Athena database along with an S3 bucket"
+  default     = false
 }
