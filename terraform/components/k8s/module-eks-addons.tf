@@ -54,7 +54,7 @@ module "eks_addons" {
         targetRevision = var.argocd_k8s_addons_git_repo["revision"]
         clusterName    = local.eks_cluster_name
         region         = var.aws_region
-        namespace      = "kube-system"
+        namespace      = var.k8s_add_ons_default_namespace
 
         awsForFluentBit = {
           enabled      = var.k8s_add_ons["enable_aws_for_fluentbit"]
