@@ -7,18 +7,18 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: {{ .Values.project }}
+  project: {{ .Values.global.project }}
   source:
-    repoURL: {{ .Values.repoUrl }}
+    repoURL: {{ .Values.global.repoUrl }}
     path: k8s/add-ons/aws-for-fluent-bit
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: {{ .Values.global.targetRevision }}
     helm:
       values: |
         aws-for-fluent-bit:
         {{- toYaml .Values.awsForFluentBit | nindent 10 }}
       parameters:
       - name: aws-for-fluent-bit.cloudWatch.region
-        value: {{ .Values.region }}
+        value: {{ .Values.global.region }}
       - name: aws-for-fluent-bit.serviceAccount.name
         value: {{ .Values.awsForFluentBit.serviceAccountName }}
       - name: aws-for-fluent-bit.cloudWatch.serviceAccount.name
@@ -26,14 +26,14 @@ spec:
       - name: aws-for-fluent-bit.cloudWatch.logGroupName
         value: {{ .Values.awsForFluentBit.logGroupName }}
       - name: aws-for-fluent-bit.firehose.region
-        value: {{ .Values.region }}
+        value: {{ .Values.global.region }}
       - name: aws-for-fluent-bit.kinesis.region
-        value: {{ .Values.region }}
+        value: {{ .Values.global.region }}
       - name: aws-for-fluent-bit.elasticsearch.region
-        value: {{ .Values.region }}
+        value: {{ .Values.global.region }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.namespace }}
+    namespace: {{ .Values.global.namespace }}
   syncPolicy:
     automated:
       prune: true

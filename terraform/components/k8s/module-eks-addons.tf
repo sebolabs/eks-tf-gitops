@@ -50,12 +50,14 @@ module "eks_addons" {
 
       ##### NEW STUFF #####
       values = {
-        project        = "default"
-        repoUrl        = var.argocd_k8s_addons_git_repo["url"]
-        targetRevision = var.argocd_k8s_addons_git_repo["revision"]
-        clusterName    = local.eks_cluster_name
-        region         = var.aws_region
-        namespace      = var.k8s_add_ons_default_namespace
+        global = {
+          project        = "default"
+          repoUrl        = var.argocd_k8s_addons_git_repo["url"]
+          targetRevision = var.argocd_k8s_addons_git_repo["revision"]
+          clusterName    = local.eks_cluster_name
+          region         = var.aws_region
+          namespace      = var.k8s_add_ons_default_namespace
+        }
 
         awsCloudWatchMetrics = {
           enabled = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
@@ -72,7 +74,9 @@ module "eks_addons" {
 
         awsLoadBalancerController = {
           enabled         = var.k8s_add_ons["enable_aws_load_balancer_controller"]
-          imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
+          image = {
+            repository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
+          }
         }
 
         clusterAutoscaler = {

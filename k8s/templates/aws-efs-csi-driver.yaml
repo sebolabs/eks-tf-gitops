@@ -7,11 +7,11 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: {{ .Values.project }}
+  project: {{ .Values.global.project }}
   source:
     repoURL: {{ .Values.repoUrl }}
     path: k8s/add-ons/aws-efs-csi-driver
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: {{ .Values.global.targetRevision }}
     helm:
       values: |
         aws-efs-csi-driver:
@@ -23,7 +23,7 @@ spec:
         value: {{ .Values.awsEfsCsiDriver.serviceAccountName }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.namespace }}
+    namespace: {{ .Values.global.namespace }}
   syncPolicy:
     automated:
       prune: true
