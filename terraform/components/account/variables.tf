@@ -37,9 +37,16 @@ variable "additional_default_tags" {
 }
 
 # SPECIFIC
+variable "github_actions_oidc_enable" {
+  type        = bool
+  description = "Wheather to configiure GitHub Actions OIDC"
+  default     = false
+}
+
 variable "github_actions_oidc_provider_exists" {
   type        = bool
   description = "Wheather the OIDC provider for GitHub is already configured within the AWS account"
+  default     = false
 }
 
 variable "github_actions_linked_repo" {

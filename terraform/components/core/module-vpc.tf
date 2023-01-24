@@ -1,6 +1,6 @@
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.18.1"
+  version = "3.19.0"
 
   name = local.aws_account_level_id
   tags = tomap({ Name = local.aws_account_level_id })

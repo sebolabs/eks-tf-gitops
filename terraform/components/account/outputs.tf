@@ -3,7 +3,7 @@ output "__AWS_ACCOUNT_LEVEL_IDENTIFIER__" {
 }
 
 output "github_actions_iam_role_arn" {
-  value = aws_iam_role.github_actions.arn
+  value = var.github_actions_oidc_enable ? aws_iam_role.github_actions[0].arn : null
 }
 
 output "s3_bucket_logs_arn" {
