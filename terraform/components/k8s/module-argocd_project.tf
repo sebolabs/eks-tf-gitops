@@ -3,7 +3,7 @@ module "argocd_project" {
 
   project             = var.project
   environment         = var.environment
-  argocd_project_name = var.k8s_argocd_project_name
+  argocd_project_name = var.argocd_project_name
 
   depends_on = [
     module.eks_addons

@@ -54,7 +54,7 @@ csiSecretsStoreProviderAws:
 #
 # external-dns
 #
-externalDns:
+# externalDns:
 #   enable: true
   serviceAccountName: external-dns-sa # managed by Terraform
 #   zoneIdFilter: Z02863691KG7XHKVXVJFK # TODO: make sure your existing public R53 zone matches here

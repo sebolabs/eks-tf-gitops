@@ -1,66 +1,34 @@
-#
-# global
-#
-project: default
-repoUrl: https://github.com/sebolabs/eks-tf-gitops
-targetRevision: release-1-2-0
-clusterName: seminc-test-k8s
-region: eu-central-1
-namespace: kube-system
+global:
+  project: default
+  repoUrl: https://github.com/sebolabs/eks-tf-gitops
+  targetRevision: release-1-2-0
+  clusterName: seminc-test-k8s
+  region: eu-central-1
+  namespace: kube-system
 
-#
-# aws-cloudwatch-metrics
-#
 awsCloudWatchMetrics:
   enable: false
-  # serviceAccountName: aws-cloudwatch-metrics-sa # managed by Terraform
 
-#
-# aws-efs-csi-driver
-#
 awsEfsCsiDriver:
   enable: false
-  # serviceAccountName: efs-csi-sa # managed by Terraform
 
-#
-# aws-for-fluent-bit
-#
 awsForFluentBit:
   enable: true
-  # serviceAccountName: aws-for-fluent-bit-sa # managed by Terraform
-  logGroupName: /aws/eks/seminc-test-k8s/fluentbit # TODO: make sure your desired CWLG matches here
+  logGroupName: /aws/eks/seminc-test-k8s/fluentbit
 
-#
-# aws-load-balancer-controller
-#
 awsLoadBalancerController:
   enable: true
-  imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller # TODO: make sure your region matches here
-  # serviceAccountName: aws-load-balancer-controller-sa # managed by Terraform
+  imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller
 
-#
-# cluster-autoscaler
-#
 clusterAutoscaler:
   enable: true
-  # serviceAccountName: cluster-autoscaler-sa # managed by Terraform
 
-#
-# csi-secrets-store-provider-aws
-#
 csiSecretsStoreProviderAws:
   enable: false
 
-#
-# external-dns
-#
 externalDns:
   enable: true
-  # serviceAccountName: external-dns-sa # managed by Terraform
-  zoneIdFilter: Z001454333WWIF1TDUL69 # TODO: make sure your existing public R53 zone matches here
+  zoneIdFilter: Z001454333WWIF1TDUL69
 
-#
-# metrics-server
-#
 metricsServer:
   enable: true

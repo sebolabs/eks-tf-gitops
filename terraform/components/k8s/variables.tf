@@ -81,6 +81,12 @@ variable "argocd_k8s_addons_git_repo" {
   description = "A Map with details on Git repo where ArgoCD should pull K8s add-ons configuration"
 }
 
+variable "argocd_project_name" {
+  description = "A custom ArgoCD project name to override project_name-environment combination"
+  type        = string
+  default     = null
+}
+
 variable "logs_s3_bucket_arn" {
   type        = string
   description = "The ARN of an existing S3 bucket for storing logs"
@@ -95,10 +101,4 @@ variable "k8s_add_ons_default_namespace" {
   type        = string
   description = "The K8s namespace where all add-ons should be deployed to by default"
   default     = "kube-system"
-}
-
-variable "k8s_argocd_project_name" {
-  description = "A custom ArgoCD project name to override project_name-environment combination"
-  type        = string
-  default     = null
 }
