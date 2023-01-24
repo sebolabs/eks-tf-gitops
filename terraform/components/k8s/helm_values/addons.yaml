@@ -26,9 +26,9 @@ clusterAutoscaler:
 csiSecretsStoreProviderAws:
   enable: false
 
-externalDns:
-  enable: true
-  zoneIdFilter: Z001454333WWIF1TDUL69
+# externalDns:
+#   enable: false
+#   zoneIdFilter: Z001454333WWIF1TDUL69
 
 metricsServer:
   enable: true
