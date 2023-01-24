@@ -56,6 +56,14 @@ module "eks_addons" {
         region         = var.aws_region
         namespace      = var.k8s_add_ons_default_namespace
 
+        awsCloudWatchMetrics = {
+          enabled = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
+        }
+
+        awsEfsCsiDriver = {
+          enabled = var.k8s_add_ons["enable_aws_efs_csi_driver"]
+        }
+
         awsForFluentBit = {
           enabled      = var.k8s_add_ons["enable_aws_for_fluentbit"]
           logGroupName = local.aws_for_fluentbit_cw_log_group_name
@@ -66,9 +74,21 @@ module "eks_addons" {
           imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
         }
 
+        clusterAutoscaler = {
+          enabled = var.k8s_add_ons["enable_cluster_autoscaler"]
+        }
+
+        csiSecretsStoreProviderAws = {
+          enabled = var.k8s_add_ons["enable_csi_secrets_store_provider_aws"]
+        }
+
         externalDns = {
           enabled      = var.k8s_add_ons["enable_external_dns"]
           zoneIdFilter = data.aws_route53_zone.public.zone_id
+        }
+
+        metricsServer = {
+          enabled = var.k8s_add_ons["enable_metrics_server"]
         }
       }
       ##### NEW STUFF #####
