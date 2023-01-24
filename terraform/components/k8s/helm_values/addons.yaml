@@ -1,10 +1,10 @@
-# global:
-#   project: default
-#   repoUrl: https://github.com/sebolabs/eks-tf-gitops
-#   targetRevision: release-1-2-0
-#   clusterName: seminc-test-k8s
-#   region: eu-central-1
-#   namespace: kube-system
+global:
+  project: default
+  repoUrl: https://github.com/sebolabs/eks-tf-gitops
+  targetRevision: release-1-2-0
+  clusterName: seminc-test-k8s
+  region: eu-central-1
+  namespace: kube-system
 
 # awsCloudWatchMetrics:
 #   enable: false
@@ -26,9 +26,9 @@
 # csiSecretsStoreProviderAws:
 #   enable: false
 
-externalDns:
-  enable: true
-  zoneIdFilter: Z001454333WWIF1TDUL69
+# externalDns:
+#   enable: true
+#   zoneIdFilter: Z001454333WWIF1TDUL69
 
 # metricsServer:
 #   enable: true

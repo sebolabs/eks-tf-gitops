@@ -47,7 +47,7 @@ module "eks_addons" {
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
       add_on_application = true
-      values             = yamldecode(file("${path.module}/helm_values/addons.yaml"))
+      values             = yamldecode(file("${path.module}/helm_values/addons.yaml")) # TODO: templatefile
     }
 
     # Example of an additional app configuration
@@ -80,7 +80,11 @@ module "eks_addons" {
   enable_aws_load_balancer_controller      = var.k8s_add_ons["enable_aws_load_balancer_controller"]
   aws_load_balancer_controller_helm_config = {
     namespace = var.k8s_add_ons_default_namespace
-    imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
+    # values = {
+    #   image = {
+    #     imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
+    #   }
+    # }
   }
 
   ## cluster-autoscaler
@@ -95,7 +99,7 @@ module "eks_addons" {
   external_dns_route53_zone_arns = [data.aws_route53_zone.public.arn]
   external_dns_helm_config       = {
     namespace    = var.k8s_add_ons_default_namespace
-    zoneIdFilter = "Z001454333WWIF1TDUL69"
+    zoneIdFilter = data.aws_route53_zone.public.zone_id # TODO
   }
 
   ## metrics-server
