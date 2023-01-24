@@ -72,13 +72,16 @@ module "eks_addons" {
 
   ## aws-for-fluentbit
   enable_aws_for_fluentbit                 = var.k8s_add_ons["enable_aws_for_fluentbit"]
-  aws_for_fluentbit_helm_config            = { namespace = var.k8s_add_ons_default_namespace }
   aws_for_fluentbit_cw_log_group_name      = local.aws_for_fluentbit_cw_log_group_name
   aws_for_fluentbit_cw_log_group_retention = 3
+  aws_for_fluentbit_helm_config            = { namespace = var.k8s_add_ons_default_namespace }
 
   ## aws-load-balancer-controller
   enable_aws_load_balancer_controller      = var.k8s_add_ons["enable_aws_load_balancer_controller"]
-  aws_load_balancer_controller_helm_config = { namespace = var.k8s_add_ons_default_namespace }
+  aws_load_balancer_controller_helm_config = {
+    namespace = var.k8s_add_ons_default_namespace
+    imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
+  }
 
   ## cluster-autoscaler
   enable_cluster_autoscaler      = var.k8s_add_ons["enable_cluster_autoscaler"]
@@ -89,8 +92,11 @@ module "eks_addons" {
 
   ## external-dns
   enable_external_dns            = var.k8s_add_ons["enable_external_dns"]
-  external_dns_helm_config       = { namespace = var.k8s_add_ons_default_namespace }
   external_dns_route53_zone_arns = [data.aws_route53_zone.public.arn]
+  external_dns_helm_config       = {
+    namespace    = var.k8s_add_ons_default_namespace
+    zoneIdFilter = "Z001454333WWIF1TDUL69"
+  }
 
   ## metrics-server
   enable_metrics_server      = var.k8s_add_ons["enable_metrics_server"]
