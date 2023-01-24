@@ -52,6 +52,7 @@ variable "github_actions_oidc_provider_exists" {
 variable "github_actions_linked_repo" {
   type        = string
   description = "The GitHub Actions linked repo (<orgName/repoName>) used to configure a trust condition for OIDC"
+  default     = null
 }
 
 variable "enable_s3_bukcet_logs" {

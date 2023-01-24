@@ -39,7 +39,13 @@ variable "additional_default_tags" {
 # SPECIFIC
 variable "r53_public_hosted_zone_name" {
   type        = string
-  description = "The Route53 public domain that is active within the account along with the corresponding ACM certificate"
+  description = "The Route53 public domain name. If no other ACM certificate domain is specified this domain will be used to refer a certificate."
+}
+
+variable "acm_cerificate_domain" {
+  type        = string
+  description = "The domain name associated with a valid ACM certificate"
+  default     = null
 }
 
 variable "eks_cluster_version" {
@@ -89,4 +95,10 @@ variable "k8s_add_ons_default_namespace" {
   type        = string
   description = "The K8s namespace where all add-ons should be deployed to by default"
   default     = "kube-system"
+}
+
+variable "k8s_argocd_project_name" {
+  description = "A custom ArgoCD project name to override project_name-environment combination"
+  type        = string
+  default     = null
 }

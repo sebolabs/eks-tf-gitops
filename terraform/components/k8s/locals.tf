@@ -25,4 +25,6 @@ locals {
   eks_cluster_name = local.aws_account_level_id
 
   whitelisted_public_cidrs = split(",", replace(aws_ssm_parameter.eks_cluster_endpoint_public_access_cidrs.value, " ", ""))
+
+  aws_for_fluentbit_cw_log_group_name = "/aws/eks/${module.eks.eks_cluster_id}/fluentbit"
 }

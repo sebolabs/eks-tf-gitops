@@ -1,5 +1,5 @@
 module "eks_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.18.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.21.0"
 
   depends_on = [module.eks, aws_security_group.argocd_alb_public_access_whitelist]
 
@@ -46,6 +46,32 @@ module "eks_addons" {
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
       add_on_application = true
+
+      ##### NEW STUFF #####
+      values = {
+        project        = "default"
+        repoUrl        = var.argocd_k8s_addons_git_repo["url"]
+        targetRevision = var.argocd_k8s_addons_git_repo["revision"]
+        clusterName    = local.eks_cluster_name
+        region         = var.aws_region
+        namespace      = "kube-system"
+
+        awsForFluentBit = {
+          enabled      = var.k8s_add_ons["enable_aws_for_fluentbit"]
+          logGroupName = local.aws_for_fluentbit_cw_log_group_name
+        }
+
+        awsLoadBalancerController = {
+          enabled         = var.k8s_add_ons["enable_aws_load_balancer_controller"]
+          imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
+        }
+
+        externalDns = {
+          enabled      = var.k8s_add_ons["enable_external_dns"]
+          zoneIdFilter = data.aws_route53_zone.public.zone_id
+        }
+      }
+      ##### NEW STUFF #####
     }
 
     # Example of an additional app configuration
@@ -71,7 +97,7 @@ module "eks_addons" {
   ## aws-for-fluentbit
   enable_aws_for_fluentbit                 = var.k8s_add_ons["enable_aws_for_fluentbit"]
   aws_for_fluentbit_helm_config            = { namespace = var.k8s_add_ons_default_namespace }
-  aws_for_fluentbit_cw_log_group_name      = "/aws/eks/${module.eks.eks_cluster_id}/fluentbit"
+  aws_for_fluentbit_cw_log_group_name      = local.aws_for_fluentbit_cw_log_group_name
   aws_for_fluentbit_cw_log_group_retention = 3
 
   ## aws-load-balancer-controller

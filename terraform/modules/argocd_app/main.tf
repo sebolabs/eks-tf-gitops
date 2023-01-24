@@ -10,7 +10,7 @@ resource "helm_release" "argocd_application" {
   for_each = { for k, v in local.applications : k => merge(local.default_helm_application, v) }
 
   name      = each.key
-  chart     = "${path.module}/argocd-application/helm"
+  chart     = "${path.module}/argocd-application"
   version   = "1.0.0"
   namespace = local.namespace
 
