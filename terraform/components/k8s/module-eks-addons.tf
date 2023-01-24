@@ -30,6 +30,7 @@ module "eks_addons" {
     version = var.argocd_helm_chart_version
 
     values = [templatefile("${path.module}/helm_values/argocd.yaml", {
+      environment           = var.environment
       group_name            = "add-ons"
       domain_name           = data.aws_route53_zone.public.name
       asm_cert_arn          = data.aws_acm_certificate.public.arn
@@ -84,7 +85,7 @@ module "eks_addons" {
 
         externalDns = {
           enabled      = var.k8s_add_ons["enable_external_dns"]
-          zoneIdFilter = data.aws_route53_zone.public.zone_id
+          zoneIdFilters = [data.aws_route53_zone.public.zone_id]
         }
 
         metricsServer = {

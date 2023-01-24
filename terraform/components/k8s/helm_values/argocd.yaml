@@ -24,13 +24,13 @@ server:
       alb.ingress.kubernetes.io/backend-protocol: HTTPS
       alb.ingress.kubernetes.io/healthcheck-protocol: HTTPS
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-      alb.ingress.kubernetes.io/actions.ssl-redirect: '443'
+      alb.ingress.kubernetes.io/actions.ssl-redirect: "443"
       alb.ingress.kubernetes.io/certificate-arn: ${asm_cert_arn}
       alb.ingress.kubernetes.io/load-balancer-attributes: routing.http.drop_invalid_header_fields.enabled=true,access_logs.s3.enabled=true,access_logs.s3.bucket=${access_logs_s3_bucket},access_logs.s3.prefix=argocd
       alb.ingress.kubernetes.io/security-groups: ${security_group_id}
       alb.ingress.kubernetes.io/manage-backend-security-group-rules: "true"
       alb.ingress.kubernetes.io/tags: ${tags}
-    hosts: 
+    hosts:
       - argocd.${domain_name}
     tls:
       - hosts:
@@ -70,4 +70,4 @@ applicationSet:
 # ISSUE 2: https://github.com/argoproj/argo-cd/issues/11597
 configs:
   params:
-    application.namespaces: "test-*"
+    application.namespaces: "${environment}-*"
