@@ -1,34 +1,34 @@
-global:
-  project: default
-  repoUrl: https://github.com/sebolabs/eks-tf-gitops
-  targetRevision: release-1-2-0
-  clusterName: seminc-test-k8s
-  region: eu-central-1
-  namespace: kube-system
+# global:
+#   project: default
+#   repoUrl: https://github.com/sebolabs/eks-tf-gitops
+#   targetRevision: release-1-2-0
+#   clusterName: seminc-test-k8s
+#   region: eu-central-1
+#   namespace: kube-system
 
-awsCloudWatchMetrics:
-  enable: false
-
-awsEfsCsiDriver:
-  enable: false
-
-awsForFluentBit:
-  enable: true
-  logGroupName: /aws/eks/seminc-test-k8s/fluentbit
-
-awsLoadBalancerController:
-  enable: true
-  imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller
-
-clusterAutoscaler:
-  enable: true
-
-csiSecretsStoreProviderAws:
-  enable: false
-
-# externalDns:
+# awsCloudWatchMetrics:
 #   enable: false
-#   zoneIdFilter: Z001454333WWIF1TDUL69
 
-metricsServer:
+# awsEfsCsiDriver:
+#   enable: false
+
+# awsForFluentBit:
+#   enable: true
+#   logGroupName: /aws/eks/seminc-test-k8s/fluentbit
+
+# awsLoadBalancerController:
+#   enable: true
+#   imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller
+
+# clusterAutoscaler:
+#   enable: true
+
+# csiSecretsStoreProviderAws:
+#   enable: false
+
+externalDns:
   enable: true
+  zoneIdFilter: Z001454333WWIF1TDUL69
+
+# metricsServer:
+#   enable: true

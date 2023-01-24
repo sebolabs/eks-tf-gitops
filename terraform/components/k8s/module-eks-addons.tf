@@ -47,49 +47,7 @@ module "eks_addons" {
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
       add_on_application = true
-
-      values = yamldecode(file("${path.module}/helm_values/addons.yaml"))
-
-      # values = {
-      #   global = {
-      #     project        = "default"
-      #     repoUrl        = var.argocd_k8s_addons_git_repo["url"]
-      #     targetRevision = var.argocd_k8s_addons_git_repo["revision"]
-      #     clusterName    = local.eks_cluster_name
-      #     region         = var.aws_region
-      #     namespace      = var.k8s_add_ons_default_namespace
-      #     uhhh = "ahhh" #
-      #   }
-      #   awsCloudWatchMetrics = {
-      #     enabled = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
-      #   }
-      #   awsEfsCsiDriver = {
-      #     enabled = var.k8s_add_ons["enable_aws_efs_csi_driver"]
-      #   }
-      #   awsForFluentBit = {
-      #     enabled      = var.k8s_add_ons["enable_aws_for_fluentbit"]
-      #     logGroupName = local.aws_for_fluentbit_cw_log_group_name
-      #   }
-      #   awsLoadBalancerController = {
-      #     enabled         = var.k8s_add_ons["enable_aws_load_balancer_controller"]
-      #     imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
-      #     dupa = "cycki" #
-      #   }
-      #   clusterAutoscaler = {
-      #     enabled = var.k8s_add_ons["enable_cluster_autoscaler"]
-      #   }
-      #   csiSecretsStoreProviderAws = {
-      #     enabled = var.k8s_add_ons["enable_csi_secrets_store_provider_aws"]
-      #   }
-      #   externalDns = {
-      #     enabled      = var.k8s_add_ons["enable_external_dns"]
-      #     zoneIdFilter = data.aws_route53_zone.public.zone_id
-      #     doh = "blah" #
-      #   }
-      #   metricsServer = {
-      #     enabled = var.k8s_add_ons["enable_metrics_server"]
-      #   }
-      # }
+      values             = yamldecode(file("${path.module}/helm_values/addons.yaml"))
     }
 
     # Example of an additional app configuration
