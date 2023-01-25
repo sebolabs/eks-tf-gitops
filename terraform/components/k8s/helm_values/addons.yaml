@@ -1,8 +1,8 @@
 global:
   project: default
+  namespace: ${namespace}
   repoUrl: ${repoUrl}
   targetRevision: ${targetRevision}
-  namespace: ${namespace}
 
 awsCloudWatchMetrics:
   enable: ${awsCloudWatchMetricsEnabled}
@@ -18,7 +18,7 @@ awsForFluentBit:
 
 awsLoadBalancerController:
   enable: ${awsLoadBalancerControllerEnabled}
-  serviceAccountName: aws-load-balancer-controller-sa
+  serviceAccountName: aws-load-balancer-controller-sa  # managed by Terraform
 
 clusterAutoscaler:
   enable: ${clusterAutoscalerEnabled}
@@ -29,7 +29,7 @@ csiSecretsStoreProviderAws:
 
 externalDns:
   enable: ${externalDnsEnabled}
-  serviceAccountName: external-dns-sa
+  serviceAccountName: external-dns-sa  # managed by Terraform
 
 metricsServer:
   enable: ${metricsServerEnabled}
