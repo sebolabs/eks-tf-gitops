@@ -80,11 +80,6 @@ module "eks_addons" {
   enable_aws_load_balancer_controller      = var.k8s_add_ons["enable_aws_load_balancer_controller"]
   aws_load_balancer_controller_helm_config = {
     namespace = var.k8s_add_ons_default_namespace
-    # values = {
-    #   image = {
-    #     imageRepository = "602401143452.dkr.ecr.${var.aws_region}.amazonaws.com/amazon/aws-load-balancer-controller"
-    #   }
-    # }
   }
 
   ## cluster-autoscaler
@@ -99,8 +94,7 @@ module "eks_addons" {
   external_dns_route53_zone_arns = [data.aws_route53_zone.public.arn]
   external_dns_helm_config       = {
     namespace    = var.k8s_add_ons_default_namespace
-    zoneIdFilter = data.aws_route53_zone.public.zone_id # TODO
-    create_service_account_secret_token = true
+    # zoneIdFilter = data.aws_route53_zone.public.zone_id # TODO
   }
 
   ## metrics-server

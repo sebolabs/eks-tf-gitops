@@ -6,29 +6,29 @@ global:
   region: eu-central-1
   namespace: kube-system
 
-# awsCloudWatchMetrics:
-#   enable: false
+awsCloudWatchMetrics:
+  enable: false
 
-# awsEfsCsiDriver:
-#   enable: false
+awsEfsCsiDriver:
+  enable: false
 
-# awsForFluentBit:
-#   enable: true
-#   logGroupName: /aws/eks/seminc-test-k8s/fluentbit
+awsForFluentBit:
+  enable: false
+  logGroupName: /aws/eks/seminc-test-k8s/fluentbit
 
 awsLoadBalancerController:
-#   enable: true
+  enable: true
   imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller
 
-# clusterAutoscaler:
-#   enable: true
+clusterAutoscaler:
+  enable: false
 
-# csiSecretsStoreProviderAws:
-#   enable: false
+csiSecretsStoreProviderAws:
+  enable: false
 
 # externalDns:
-#   enable: true
-#   zoneIdFilter: Z001454333WWIF1TDUL69
+  # enable: true
+  # zoneIdFilter: Z001454333WWIF1TDUL69
 
-# metricsServer:
-#   enable: true
+metricsServer:
+  enable: false
