@@ -18,7 +18,7 @@ spec:
         {{- toYaml .Values.awsForFluentBit | nindent 10 }}
       parameters:
       - name: aws-for-fluent-bit.cloudWatch.region
-        value: {{ .Values.global.region }}
+        value: {{ .Values.region }}
       - name: aws-for-fluent-bit.serviceAccount.name
         value: {{ .Values.awsForFluentBit.serviceAccountName }}
       - name: aws-for-fluent-bit.cloudWatch.serviceAccount.name
@@ -26,11 +26,11 @@ spec:
       - name: aws-for-fluent-bit.cloudWatch.logGroupName
         value: {{ .Values.awsForFluentBit.logGroupName }}
       - name: aws-for-fluent-bit.firehose.region
-        value: {{ .Values.global.region }}
+        value: {{ .Values.region }}
       - name: aws-for-fluent-bit.kinesis.region
-        value: {{ .Values.global.region }}
+        value: {{ .Values.region }}
       - name: aws-for-fluent-bit.elasticsearch.region
-        value: {{ .Values.global.region }}
+        value: {{ .Values.region }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.global.namespace }}

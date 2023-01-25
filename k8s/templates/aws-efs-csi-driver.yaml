@@ -9,7 +9,7 @@ metadata:
 spec:
   project: {{ .Values.global.project }}
   source:
-    repoURL: {{ .Values.repoUrl }}
+    repoURL: {{ .Values.gloval.repoUrl }}
     path: k8s/add-ons/aws-efs-csi-driver
     targetRevision: {{ .Values.global.targetRevision }}
     helm:

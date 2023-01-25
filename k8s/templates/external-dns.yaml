@@ -18,7 +18,7 @@ spec:
         {{- toYaml .Values.externalDns | nindent 10 }}
       parameters:
       - name: external-dns.aws.region
-        value: {{ .Values.global.region }}
+        value: {{ .Values.region }}
       - name: external-dns.serviceAccount.name
         value: {{ .Values.externalDns.serviceAccountName }}
       - name: external-dns.zoneIdFilters[0]

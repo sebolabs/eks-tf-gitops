@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         aws-load-balancer-controller:
-          clusterName: {{ .Values.global.clusterName }}
+          clusterName: {{ .Values.clusterName }}
           image:
             repository: {{ .Values.awsLoadBalancerController.imageRepository }}
           serviceAccount:

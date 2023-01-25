@@ -18,11 +18,11 @@ spec:
         {{- toYaml .Values.clusterAutoscaler | nindent 10 }}
       parameters:
       - name: cluster-autoscaler.awsRegion
-        value: {{ .Values.global.region }}
+        value: {{ .Values.region }}
       - name: cluster-autoscaler.rbac.serviceAccount.name
         value: {{ .Values.clusterAutoscaler.serviceAccountName }}
       - name: cluster-autoscaler.autoDiscovery.clusterName
-        value: {{ .Values.global.clusterName }}
+        value: {{ .Values.clusterName }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.global.namespace }}

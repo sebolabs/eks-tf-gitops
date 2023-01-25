@@ -47,7 +47,19 @@ module "eks_addons" {
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
       add_on_application = true
-      values             = yamldecode(file("${path.module}/helm_values/addons.yaml")) # TODO: templatefile
+      values             = yamldecode(templatefile("${path.module}/helm_values/addons.yaml", {
+        repoUrl                           = var.argocd_k8s_addons_git_repo["url"]
+        targetRevision                    = var.argocd_k8s_addons_git_repo["revision"]
+        namespace                         = var.k8s_add_ons_default_namespace
+        awsCloudWatchMetricsEnabled       = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
+        awsEfsCsiDriverEnabled            = var.k8s_add_ons["enable_aws_efs_csi_driver"]
+        awsForFluentBitEnabled            = var.k8s_add_ons["enable_aws_for_fluentbit"]
+        awsLoadBalancerControllerEnabled  = var.k8s_add_ons["enable_aws_load_balancer_controller"]
+        clusterAutoscalerEnabled          = var.k8s_add_ons["enable_cluster_autoscaler"]
+        csiSecretsStoreProviderAwsEnabled = var.k8s_add_ons["enable_csi_secrets_store_provider_aws"]
+        externalDnsEnabled                = var.k8s_add_ons["enable_external_dns"]
+        metricsServerEnabled              = var.k8s_add_ons["enable_metrics_server"]
+      }))
     }
 
     # Example of an additional app configuration

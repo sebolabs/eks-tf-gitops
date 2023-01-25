@@ -18,7 +18,7 @@ spec:
         {{- toYaml .Values.awsCloudWatchMetrics | nindent 10 }}
       parameters:
       - name: aws-cloudwatch-metrics.clusterName
-        value: {{ .Values.global.clusterName }}
+        value: {{ .Values.clusterName }}
       - name: aws-cloudwatch-metrics.serviceAccount.name
         value: {{ .Values.awsCloudWatchMetrics.serviceAccountName }}
   destination:

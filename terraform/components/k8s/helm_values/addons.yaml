@@ -1,37 +1,35 @@
 global:
   project: default
-  repoUrl: https://github.com/sebolabs/eks-tf-gitops
-  targetRevision: release-1-2-0
-  clusterName: seminc-test-k8s
-  region: eu-central-1
-  namespace: kube-system
+  repoUrl: ${repoUrl}
+  targetRevision: ${targetRevision}
+  namespace: ${namespace}
 
 awsCloudWatchMetrics:
-  enable: false
+  enable: ${awsCloudWatchMetricsEnabled}
   serviceAccountName: aws-cloudwatch-metrics-sa # managed by Terraform
 
 awsEfsCsiDriver:
-  enable: false
+  enable: ${awsEfsCsiDriverEnabled}
   serviceAccountName: efs-csi-sa # managed by Terraform
 
 awsForFluentBit:
-  enable: true
+  enable: ${awsForFluentBitEnabled}
   serviceAccountName: aws-for-fluent-bit-sa # managed by Terraform
 
 awsLoadBalancerController:
-  enable: true
+  enable: ${awsLoadBalancerControllerEnabled}
   serviceAccountName: aws-load-balancer-controller-sa
 
 clusterAutoscaler:
-  enable: false
+  enable: ${clusterAutoscalerEnabled}
   serviceAccountName: cluster-autoscaler-sa # managed by Terraform
 
 csiSecretsStoreProviderAws:
-  enable: false
+  enable: ${csiSecretsStoreProviderAwsEnabled}
 
 externalDns:
-  enable: true
+  enable: ${externalDnsEnabled}
   serviceAccountName: external-dns-sa
 
 metricsServer:
-  enable: false
+  enable: ${metricsServerEnabled}
