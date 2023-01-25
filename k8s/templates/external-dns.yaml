@@ -25,7 +25,7 @@ spec:
         value: {{ .Values.externalDns.zoneIdFilter }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.global.namespace }}
+    namespace: external-dns # {{ .Values.global.namespace }} ## BUG!
   syncPolicy:
     automated:
       prune: true

@@ -14,7 +14,7 @@ awsEfsCsiDriver:
 
 awsForFluentBit:
   enable: false
-  logGroupName: /aws/eks/seminc-test-k8s/fluentbit
+  # logGroupName: /aws/eks/seminc-test-k8s/fluentbit
 
 awsLoadBalancerController:
   enable: true
@@ -26,8 +26,8 @@ clusterAutoscaler:
 csiSecretsStoreProviderAws:
   enable: false
 
-# externalDns:
-  # enable: true
+externalDns:
+  enable: true
   # zoneIdFilter: Z001454333WWIF1TDUL69
 
 metricsServer:
