@@ -91,7 +91,7 @@ module "eks_addons" {
   enable_external_dns            = var.k8s_add_ons["enable_external_dns"]
   external_dns_route53_zone_arns = [data.aws_route53_zone.public.arn]
   external_dns_helm_config       = {
-    # namespace = var.k8s_add_ons_default_namespace
+    # namespace = var.k8s_add_ons_default_namespace # BUG
     zoneIdFilter = data.aws_route53_zone.public.zone_id # ???
   }
 

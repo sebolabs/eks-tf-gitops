@@ -8,27 +8,30 @@ global:
 
 awsCloudWatchMetrics:
   enable: false
+  serviceAccountName: aws-cloudwatch-metrics-sa # managed by Terraform
 
 awsEfsCsiDriver:
   enable: false
+  serviceAccountName: efs-csi-sa # managed by Terraform
 
 awsForFluentBit:
-  enable: false
-  # logGroupName: /aws/eks/seminc-test-k8s/fluentbit
+  enable: true
+  serviceAccountName: aws-for-fluent-bit-sa # managed by Terraform
 
 awsLoadBalancerController:
   enable: true
-  imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller
+  serviceAccountName: aws-load-balancer-controller-sa
 
 clusterAutoscaler:
   enable: false
+  serviceAccountName: cluster-autoscaler-sa # managed by Terraform
 
 csiSecretsStoreProviderAws:
   enable: false
 
 externalDns:
   enable: true
-  # zoneIdFilter: Z001454333WWIF1TDUL69
+  serviceAccountName: external-dns-sa
 
 metricsServer:
   enable: false

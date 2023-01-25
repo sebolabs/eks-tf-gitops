@@ -1,67 +1,56 @@
-#
-# global
-#
-# global:
-#   project: default
-#   repoUrl: https://github.com/sebolabs/eks-tf-gitops # TODO: make sure your git repo matches here
-#   targetRevision: release-1-2-0 # TODO: make sure your branch matches here
-#   clusterName: seminc-test-k8s # TODO: make sure your cluster name matches here
-#   region: eu-central-1 # TODO: make sure your region matches here
-#   namespace: kube-system
+# #
+# # global
+# #
+# # global:
+# #   project: default
+# #   repoUrl: https://github.com/sebolabs/eks-tf-gitops # TODO: make sure your git repo matches here
+# #   targetRevision: release-1-2-0 # TODO: make sure your branch matches here
+# #   clusterName: seminc-test-k8s # TODO: make sure your cluster name matches here
+# #   region: eu-central-1 # TODO: make sure your region matches here
+# #   namespace: kube-system
 
-#
-# aws-cloudwatch-metrics
-#
-awsCloudWatchMetrics:
-  # enable: false
-  serviceAccountName: aws-cloudwatch-metrics-sa # managed by Terraform
+# #
+# # aws-cloudwatch-metrics
+# #
+# awsCloudWatchMetrics:
+#   serviceAccountName: aws-cloudwatch-metrics-sa # managed by Terraform
 
-#
-# aws-efs-csi-driver
-#
-awsEfsCsiDriver:
-  # enable: false
-  serviceAccountName: efs-csi-sa # managed by Terraform
+# #
+# # aws-efs-csi-driver
+# #
+# awsEfsCsiDriver:
+#   serviceAccountName: efs-csi-sa # managed by Terraform
 
-#
-# aws-for-fluent-bit
-#
-awsForFluentBit:
-  # enable: false
-  serviceAccountName: aws-for-fluent-bit-sa # managed by Terraform
-  # logGroupName: /aws/eks/eks-tf-gitops-test-k8s/fluentbit # TODO: make sure your desired CWLG matches here
+# #
+# # aws-for-fluent-bit
+# #
+# awsForFluentBit:
+#   serviceAccountName: aws-for-fluent-bit-sa # managed by Terraform
 
-#
-# aws-load-balancer-controller
-#
-awsLoadBalancerController:
-  # enable: true
-  # imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller # TODO: make sure your region matches here
-  serviceAccountName: aws-load-balancer-controller-sa # managed by Terraform
+# #
+# # aws-load-balancer-controller
+# #
+# awsLoadBalancerController:
+#   serviceAccountName: aws-load-balancer-controller-sa # managed by Terraform
 
 # #
 # # cluster-autoscaler
 # #
-clusterAutoscaler:
-  # enable: false
-  serviceAccountName: cluster-autoscaler-sa # managed by Terraform
+# clusterAutoscaler:
+#   serviceAccountName: cluster-autoscaler-sa # managed by Terraform
 
-#
-# csi-secrets-store-provider-aws
-#
-# csiSecretsStoreProviderAws:
-  # enable: false
+# #
+# # csi-secrets-store-provider-aws
+# #
+# # csiSecretsStoreProviderAws:
 
-#
-# external-dns
-#
-externalDns:
-  # enable: true
-  serviceAccountName: external-dns-sa # managed by Terraform
-  # zoneIdFilter: Z001454333WWIF1TDUL69 # TODO: make sure your existing public R53 zone matches here
+# #
+# # external-dns
+# #
+# externalDns:
+#   serviceAccountName: external-dns-sa # managed by Terraform
 
-#
-# metrics-server
-#
-# metricsServer:
-  # enable: false
+# #
+# # metrics-server
+# #
+# # metricsServer:
