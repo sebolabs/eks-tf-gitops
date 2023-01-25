@@ -25,10 +25,16 @@ spec:
         value: {{ .Values.awsForFluentBit.serviceAccountName }}
       - name: aws-for-fluent-bit.cloudWatch.logGroupName
         value: {{ .Values.awsForFluentBit.logGroupName }}
+      - name: aws-for-fluent-bit.firehose.enabled
+        value: {{ .Values.awsForFluentBit.firehose.enabled}}
       - name: aws-for-fluent-bit.firehose.region
         value: {{ .Values.global.region }}
+      - name: aws-for-fluent-bit.kinesis.enabled
+        value: {{ .Values.awsForFluentBit.kinesis.enabled}}
       - name: aws-for-fluent-bit.kinesis.region
         value: {{ .Values.global.region }}
+      - name: aws-for-fluent-bit.elasticsearch.enabled
+        value: {{ .Values.awsForFluentBit.elasticsearch.enabled}}
       - name: aws-for-fluent-bit.elasticsearch.region
         value: {{ .Values.global.region }}
   destination:
