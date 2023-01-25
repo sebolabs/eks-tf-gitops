@@ -47,7 +47,7 @@ module "eks_addons" {
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
       add_on_application = true
-      values             = yamldecode(file("${path.module}/helm_values/addons.yaml")) # TODO: templatefile
+      # values             = yamldecode(file("${path.module}/helm_values/addons.yaml")) # TODO: templatefile
     }
 
     # Example of an additional app configuration
