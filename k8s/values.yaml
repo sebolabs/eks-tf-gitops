@@ -24,7 +24,13 @@
 # #
 # # aws-for-fluent-bit
 # #
-# awsForFluentBit:
+awsForFluentBit:
+  kinesis:
+    enabled: false
+  firehose:
+    enabled: false
+  elasticsearch:
+    enabled: false
 #   serviceAccountName: aws-for-fluent-bit-sa # managed by Terraform
 
 # #
