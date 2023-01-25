@@ -55,6 +55,17 @@ variable "github_actions_linked_repo" {
   default     = null
 }
 
+variable "r53_public_hosted_zone_name" {
+  type        = string
+  description = "The Route53 public domain name. If no other ACM certificate domain is specified this domain will be used to refer a certificate."
+}
+
+variable "create_acm_certificate" {
+  type        = bool
+  description = "Wheather to create an ACM certificate for the given Public DNS domain (r53_public_hosted_zone_name)"
+  default     = false
+}
+
 variable "enable_s3_bukcet_logs" {
   type        = bool
   description = "Wheather a dedicated S3 bucket for storing logs should be created"

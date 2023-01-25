@@ -100,6 +100,7 @@ module "eks_addons" {
   external_dns_helm_config       = {
     namespace    = var.k8s_add_ons_default_namespace
     zoneIdFilter = data.aws_route53_zone.public.zone_id # TODO
+    create_service_account_secret_token = true
   }
 
   ## metrics-server

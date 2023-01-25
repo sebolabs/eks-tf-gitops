@@ -5,6 +5,15 @@ resource "aws_security_group" "argocd_alb_public_access_whitelist" {
   tags        = tomap({ Name = "${local.aws_account_level_id}-argocd-public-access" })
 }
 
+resource "aws_security_group_rule" "argocd_ingress_whitelist_http" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks       = local.whitelisted_public_cidrs
+  security_group_id = aws_security_group.argocd_alb_public_access_whitelist.id
+}
+
 resource "aws_security_group_rule" "argocd_ingress_whitelist_https" {
   type              = "ingress"
   from_port         = 443

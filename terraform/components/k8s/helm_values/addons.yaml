@@ -16,9 +16,9 @@ global:
 #   enable: true
 #   logGroupName: /aws/eks/seminc-test-k8s/fluentbit
 
-# awsLoadBalancerController:
+awsLoadBalancerController:
 #   enable: true
-#   imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller
+  imageRepository: 602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller
 
 # clusterAutoscaler:
 #   enable: true
