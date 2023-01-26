@@ -1,7 +1,8 @@
 # CHANGELOG
 
 ## Release 1.3.0
-* ...
+* TODO: starwars
+* TODO: Application `argocd.argoproj.io/sync-wave` annotation support
 
 ## Release 1.2.0
 * VPC module version updated to 3.19.0
@@ -9,12 +10,12 @@
 * ArgoCD Helm chart version updated to 5.19.6 (~ ArgoCD v.2.5.7)
 * Terraform code improvements for flexibility
 * ArgoCD Helm chart version updated to 5.16.1 (~ ArgoCD v.2.5.3)
-* ArgoCD Project bootstrapped on cluster creation (module argocd_app/argocd-project)
+* ArgoCD Project bootstrapped on cluster creation (module argocd_project)
 * Add-ons deployment now supports multi-environment reality
 * Add-ons versions updated
 * ExternalDNS moved back to its default `external-dns` namespace due to a bug
 * `StarTrek` component added for the ArgoCD AppOfApps pattern testing purposes
-* ArgoCD Application module (argocd_app/argocd-project) added
+* ArgoCD Application module (argocd_app) added
 
 ## Release 1.1.0
 * EKS Blueprints version updated to 4.18.0
