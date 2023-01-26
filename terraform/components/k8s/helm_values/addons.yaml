@@ -1,0 +1,35 @@
+global:
+  project: default
+  namespace: ${namespace}
+  repoUrl: ${repoUrl}
+  targetRevision: ${targetRevision}
+
+awsCloudWatchMetrics:
+  enable: ${awsCloudWatchMetricsEnabled}
+  serviceAccountName: aws-cloudwatch-metrics-sa # managed by Terraform
+
+awsEfsCsiDriver:
+  enable: ${awsEfsCsiDriverEnabled}
+  serviceAccountName: efs-csi-sa # managed by Terraform
+
+awsForFluentBit:
+  enable: ${awsForFluentBitEnabled}
+  serviceAccountName: aws-for-fluent-bit-sa # managed by Terraform
+
+awsLoadBalancerController:
+  enable: ${awsLoadBalancerControllerEnabled}
+  serviceAccountName: aws-load-balancer-controller-sa  # managed by Terraform
+
+clusterAutoscaler:
+  enable: ${clusterAutoscalerEnabled}
+  serviceAccountName: cluster-autoscaler-sa # managed by Terraform
+
+csiSecretsStoreProviderAws:
+  enable: ${csiSecretsStoreProviderAwsEnabled}
+
+externalDns:
+  enable: ${externalDnsEnabled}
+  serviceAccountName: external-dns-sa  # managed by Terraform
+
+metricsServer:
+  enable: ${metricsServerEnabled}

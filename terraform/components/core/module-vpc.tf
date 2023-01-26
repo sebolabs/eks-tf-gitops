@@ -1,6 +1,6 @@
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.18.1"
+  version = "3.19.0"
 
   name = local.aws_account_level_id
   tags = tomap({ Name = local.aws_account_level_id })
@@ -10,7 +10,7 @@ module "vpc" {
   private_subnets = var.private_subnets_cidrs
   azs             = data.aws_availability_zones.available.names
 
-  enable_nat_gateway     = true
+  enable_nat_gateway     = var.enable_nat_gateway
   single_nat_gateway     = true
   one_nat_gateway_per_az = false
 

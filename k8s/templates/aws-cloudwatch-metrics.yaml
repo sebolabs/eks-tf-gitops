@@ -7,11 +7,11 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: {{ .Values.project }}
+  project: {{ .Values.global.project }}
   source:
-    repoURL: {{ .Values.repoUrl }}
+    repoURL: {{ .Values.global.repoUrl }}
     path: k8s/add-ons/aws-cloudwatch-metrics
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: {{ .Values.global.targetRevision }}
     helm:
       values: |
         aws-cloudwatch-metrics:
@@ -23,7 +23,7 @@ spec:
         value: {{ .Values.awsCloudWatchMetrics.serviceAccountName }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.namespace }}
+    namespace: {{ .Values.global.namespace }}
   syncPolicy:
     automated:
       prune: true

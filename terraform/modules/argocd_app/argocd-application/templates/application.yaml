@@ -1,0 +1,46 @@
+#
+# Note: changes to this definition won't trigger any update
+#       therefore, it must be made generic so changes can be passed as values
+#
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.project }}
+  source:
+    repoURL: {{ .Values.source.repoUrl }}
+    targetRevision: {{ .Values.source.targetRevision }}
+    path: {{ .Values.source.path }}
+    helm:
+      valueFiles:
+      - values.yaml
+      - {{ .Values.source.helm.envValueFile }}
+      values: {{ toYaml .Values.source.helm.values | toString | indent 6 }}
+  destination:
+    server: {{ .Values.destination.server }}
+    namespace: {{ .Values.namespace }}
+  syncPolicy:
+    automated:
+      allowEmpty: false # allow application have empty resources
+      prune: true       # auto-delete resources on sync
+      selfHeal: true    # triggers sync on changes made to the live cluster
+    retry:
+      backoff:
+        duration: "10s"   # retry backoff base duration
+        factor: 2         # multiplies the base duration after each failed retry
+        maxDuration: "3m" # max retry backoff duration
+      limit: 5            # max number of allowed sync retries
+    syncOptions:
+      - "CreateNamespace=true"              # ensures that namespace specified as the application destination exists
+      - "PruneLast=true"                    # allows for resource pruning to happen as a final, implicit wave of a sync operation
+      - "PrunePropagationPolicy=foreground" # owner object enter a delietion in progress state while dependents are being deleted
+      - "Validate=false"                    # disables resource validation
+      - "RespectIgnoreDifferences=true"     # respect ignored fields from '.Values.ignoreDifferences'
+  {{- with .Values.ignoreDifferences }}
+  ignoreDifferences: # for ignoring differences of problematic resources
+    {{- toYaml . | nindent 4 }}
+  {{- end }}

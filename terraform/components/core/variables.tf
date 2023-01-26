@@ -30,6 +30,12 @@ variable "aws_account_id" {
   description = "The allowed AWS account ID to prevent you from mistakenly using an incorrect one"
 }
 
+variable "additional_default_tags" {
+  type        = map(string)
+  description = "A map with additional default tags to be applied at the AWS provider level"
+  default     = {}
+}
+
 # SPECIFIC
 variable "vpc_cidr" {
   type        = string
@@ -56,4 +62,10 @@ variable "vpc_flow_logs_s3_bucket_arn" {
   type        = string
   description = "The ARN of a dedicated S3 bucket for storing logs. If not provided CW LG will be configured instead."
   default     = null
+}
+
+variable "enable_nat_gateway" {
+  type        = bool
+  description = "Whether to enable NAT gateway creation or not"
+  default     = true
 }

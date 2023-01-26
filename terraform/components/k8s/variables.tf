@@ -30,10 +30,22 @@ variable "aws_account_id" {
   description = "The allowed AWS account ID to prevent you from mistakenly using an incorrect one"
 }
 
+variable "additional_default_tags" {
+  type        = map(string)
+  description = "A map with additional default tags to be applied at the AWS provider level"
+  default     = {}
+}
+
 # SPECIFIC
 variable "r53_public_hosted_zone_name" {
   type        = string
-  description = "The Route53 public domain that is active within the account along with the corresponding ACM certificate"
+  description = "The Route53 public domain name. If no other ACM certificate domain is specified this domain will be used to refer a certificate."
+}
+
+variable "acm_cerificate_domain" {
+  type        = string
+  description = "The domain name associated with a valid ACM certificate"
+  default     = null
 }
 
 variable "eks_cluster_version" {
@@ -67,6 +79,12 @@ variable "argocd_helm_chart_version" {
 variable "argocd_k8s_addons_git_repo" {
   type        = map(string)
   description = "A Map with details on Git repo where ArgoCD should pull K8s add-ons configuration"
+}
+
+variable "argocd_project_name" {
+  description = "A custom ArgoCD project name to override project_name-environment combination"
+  type        = string
+  default     = null
 }
 
 variable "logs_s3_bucket_arn" {

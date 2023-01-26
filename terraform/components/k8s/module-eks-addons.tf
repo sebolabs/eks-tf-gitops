@@ -1,5 +1,5 @@
 module "eks_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.18.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.21.0"
 
   depends_on = [module.eks, aws_security_group.argocd_alb_public_access_whitelist]
 
@@ -30,6 +30,7 @@ module "eks_addons" {
     version = var.argocd_helm_chart_version
 
     values = [templatefile("${path.module}/helm_values/argocd.yaml", {
+      environment           = var.environment
       group_name            = "add-ons"
       domain_name           = data.aws_route53_zone.public.name
       asm_cert_arn          = data.aws_acm_certificate.public.arn
@@ -45,9 +46,30 @@ module "eks_addons" {
       repo_url           = var.argocd_k8s_addons_git_repo["url"]
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
-      values             = {}
       add_on_application = true
+      values             = yamldecode(templatefile("${path.module}/helm_values/addons.yaml", {
+        repoUrl                           = var.argocd_k8s_addons_git_repo["url"]
+        targetRevision                    = var.argocd_k8s_addons_git_repo["revision"]
+        namespace                         = var.k8s_add_ons_default_namespace
+        awsCloudWatchMetricsEnabled       = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
+        awsEfsCsiDriverEnabled            = var.k8s_add_ons["enable_aws_efs_csi_driver"]
+        awsForFluentBitEnabled            = var.k8s_add_ons["enable_aws_for_fluentbit"]
+        awsLoadBalancerControllerEnabled  = var.k8s_add_ons["enable_aws_load_balancer_controller"]
+        clusterAutoscalerEnabled          = var.k8s_add_ons["enable_cluster_autoscaler"]
+        csiSecretsStoreProviderAwsEnabled = var.k8s_add_ons["enable_csi_secrets_store_provider_aws"]
+        externalDnsEnabled                = var.k8s_add_ons["enable_external_dns"]
+        metricsServerEnabled              = var.k8s_add_ons["enable_metrics_server"]
+      }))
     }
+
+    # Example of an additional app configuration
+    # dummy = {
+    #   namespace          = "bleh"
+    #   repo_url           = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
+    #   target_revision    = "HEAD"
+    #   path               = "apps/dummy"
+    #   values             = { environment = "dev" }
+    # }
   }
 
   argocd_manage_add_ons = true
@@ -62,9 +84,9 @@ module "eks_addons" {
 
   ## aws-for-fluentbit
   enable_aws_for_fluentbit                 = var.k8s_add_ons["enable_aws_for_fluentbit"]
-  aws_for_fluentbit_helm_config            = { namespace = var.k8s_add_ons_default_namespace }
-  aws_for_fluentbit_cw_log_group_name      = "/aws/eks/${module.eks.eks_cluster_id}/fluentbit"
+  aws_for_fluentbit_cw_log_group_name      = local.aws_for_fluentbit_cw_log_group_name
   aws_for_fluentbit_cw_log_group_retention = 3
+  aws_for_fluentbit_helm_config            = { namespace = var.k8s_add_ons_default_namespace }
 
   ## aws-load-balancer-controller
   enable_aws_load_balancer_controller      = var.k8s_add_ons["enable_aws_load_balancer_controller"]
@@ -79,8 +101,11 @@ module "eks_addons" {
 
   ## external-dns
   enable_external_dns            = var.k8s_add_ons["enable_external_dns"]
-  external_dns_helm_config       = { namespace = var.k8s_add_ons_default_namespace }
   external_dns_route53_zone_arns = [data.aws_route53_zone.public.arn]
+  external_dns_helm_config       = {
+    # namespace = var.k8s_add_ons_default_namespace # ISSUE: https://github.com/aws-ia/terraform-aws-eks-blueprints/issues/1374
+    zoneIdFilter = data.aws_route53_zone.public.zone_id
+  }
 
   ## metrics-server
   enable_metrics_server      = var.k8s_add_ons["enable_metrics_server"]

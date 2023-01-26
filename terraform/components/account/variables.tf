@@ -30,13 +30,50 @@ variable "aws_account_id" {
   description = "The allowed AWS account ID to prevent you from mistakenly using an incorrect one"
 }
 
+variable "additional_default_tags" {
+  type        = map(string)
+  description = "A map with additional default tags to be applied at the AWS provider level"
+  default     = {}
+}
+
 # SPECIFIC
+variable "github_actions_oidc_enable" {
+  type        = bool
+  description = "Wheather to configiure GitHub Actions OIDC"
+  default     = false
+}
+
 variable "github_actions_oidc_provider_exists" {
   type        = bool
   description = "Wheather the OIDC provider for GitHub is already configured within the AWS account"
+  default     = false
 }
 
 variable "github_actions_linked_repo" {
   type        = string
   description = "The GitHub Actions linked repo (<orgName/repoName>) used to configure a trust condition for OIDC"
+  default     = null
+}
+
+variable "r53_public_hosted_zone_name" {
+  type        = string
+  description = "The Route53 public domain name. If no other ACM certificate domain is specified this domain will be used to refer a certificate."
+}
+
+variable "create_acm_certificate" {
+  type        = bool
+  description = "Wheather to create an ACM certificate for the given Public DNS domain (r53_public_hosted_zone_name)"
+  default     = false
+}
+
+variable "enable_s3_bukcet_logs" {
+  type        = bool
+  description = "Wheather a dedicated S3 bucket for storing logs should be created"
+  default     = true
+}
+
+variable "enable_athena" {
+  type        = bool
+  description = "Wheather to create an Athena database along with an S3 bucket"
+  default     = false
 }

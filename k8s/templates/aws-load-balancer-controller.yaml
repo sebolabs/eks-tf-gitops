@@ -7,11 +7,11 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: {{ .Values.project }}
+  project: {{ .Values.global.project }}
   source:
-    repoURL: {{ .Values.repoUrl }}
+    repoURL: {{ .Values.global.repoUrl }}
     path: k8s/add-ons/aws-load-balancer-controller
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: {{ .Values.global.targetRevision }}
     helm:
       values: |
         aws-load-balancer-controller:
@@ -24,7 +24,7 @@ spec:
         {{- toYaml .Values.awsLoadBalancerController | nindent 10 }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: {{ .Values.namespace }}
+    namespace: {{ .Values.global.namespace }}
   syncPolicy:
     automated:
       prune: true

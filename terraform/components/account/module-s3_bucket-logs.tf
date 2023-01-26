@@ -1,12 +1,13 @@
 module "s3_bucket_logs" {
   source      = "../../modules/s3_bucket"
+  count       = var.enable_s3_bukcet_logs ? 1 : 0
   bucket_name = "${local.aws_global_level_id}-logs"
 
   allow_encrypted_uploads_only = false
 
   policy_documents = [
-    data.aws_iam_policy_document.vpc_flow_logging.json,
-    data.aws_iam_policy_document.lb_access_logging.json,
+    data.aws_iam_policy_document.vpc_flow_logging[0].json,
+    data.aws_iam_policy_document.lb_access_logging[0].json,
   ]
 
   lifecycle_rules = [{

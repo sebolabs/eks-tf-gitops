@@ -1,0 +1,12 @@
+name: ""
+namespace: ""
+project: default
+source:
+  repoUrl: ""
+  targetRevision: HEAD
+  path: ""
+  helm :
+    values: ""
+destination:
+  server: https://kubernetes.default.svc
+ignoreDifferences:

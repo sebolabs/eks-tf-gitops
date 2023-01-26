@@ -9,5 +9,5 @@ data "aws_route53_zone" "public" {
 }
 
 data "aws_acm_certificate" "public" {
-  domain = var.r53_public_hosted_zone_name
+  domain = var.acm_cerificate_domain != null ? var.acm_cerificate_domain : var.r53_public_hosted_zone_name
 }
