@@ -27,7 +27,7 @@ argocd_helm_chart_version = "5.19.6"
 
 argocd_k8s_addons_git_repo = { # TODO: provide
   url      = "https://github.com/sebolabs/eks-tf-gitops.git"
-  revision = "release-1-2-0"
+  revision = "release-1-3-0"
   path     = "k8s"
 }
 
