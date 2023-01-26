@@ -40,4 +40,7 @@ $ bin/terraform.sh -p eks-tf-gitops -b eks-tf-gitops-tfstate -r eu-central-1 -e 
 
 # k8s with the use of the `local.tfvars` file
 $ bin/terraform.sh -p eks-tf-gitops -b eks-tf-gitops-tfstate -r eu-central-1 -e test -c k8s -a plan/apply -- -var-file="../../etc/local.tfvars"
+
+# startrek
+$ bin/terraform.sh -p eks-tf-gitops -b eks-tf-gitops-tfstate -r eu-central-1 -e test -c startrek -a plan/apply
 ```

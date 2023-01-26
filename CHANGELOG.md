@@ -3,6 +3,7 @@
 ## Release 1.2.0
 * VPC module version updated to 3.19.0
 * EKS Blueprints module version updated to 4.21.0
+* ArgoCD Helm chart version updated to 5.19.6 (~ ArgoCD v.2.5.7)
 * Terraform code improvements for flexibility
 * ArgoCD Helm chart version updated to 5.16.1 (~ ArgoCD v.2.5.3)
 * ArgoCD Project bootstrapped on cluster creation (module argocd_app/argocd-project)

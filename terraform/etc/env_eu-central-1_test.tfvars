@@ -52,7 +52,7 @@ argocd_project_name = "sebolabs-test" # optional (override)
 #
 startrek_argocd_apps = {
   startrek = {
-    project         = "sebolabs-test" # TODO: provide (must match the bootstrapped AppProject)
+    project         = "sebolabs-test" # TODO: provide (must match var.argocd_project_name)
     namespace       = "test-startrek" # TODO: provide (must start with <environment>- prefix)
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
     target_revision = "HEAD"
