@@ -55,7 +55,7 @@ startrek_argocd_apps = {
     project         = "sebolabs-test" # TODO: provide (must match the bootstrapped AppProject)
     namespace       = "test-startrek" # TODO: provide (must start with <environment>- prefix)
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
-    target_revision = "trying-out-things-2apps"
+    target_revision = "HEAD"
     path            = "startrek"
   }
 }
