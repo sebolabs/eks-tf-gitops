@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## Release 1.2.0
+* VPC module version updated to 3.19.0
+* EKS Blueprints module version updated to 4.21.0
+* Terraform code improvements for flexibility
+* ArgoCD Helm chart version updated to 5.16.1 (~ ArgoCD v.2.5.3)
+* ArgoCD Project bootstrapped on cluster creation (module argocd_app/argocd-project)
+* Add-ons deployment now supports multi-environment reality
+* Add-ons versions updated
+* ExternalDNS moved back to its default `external-dns` namespace due to a bug
+* `StarTrek` component added for the ArgoCD AppOfApps pattern testing purposes
+* ArgoCD Application module (argocd_app/argocd-project) added
+
 ## Release 1.1.0
 * EKS Blueprints version updated to 4.18.0
 * ArgoCD Helm chart version updated to 5.16.1 (~ ArgoCD v.2.5.3)
