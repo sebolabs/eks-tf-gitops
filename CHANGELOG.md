@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## Release 1.3.0
+* ...
+
 ## Release 1.2.0
 * VPC module version updated to 3.19.0
 * EKS Blueprints module version updated to 4.21.0
