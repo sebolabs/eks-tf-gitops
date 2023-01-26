@@ -4,7 +4,7 @@ This is how to get a fully functional and secure EKS cluster in AWS, provisioned
 
 This solution is opinionated and developed for the purpose of testing pretty much anything by providing a solid foundation.
 ### Blog
-It has all started with this article: [AWS EKS with Terraform and GitOps in minutes](https://medium.com/@sebolabs/aws-eks-with-terraform-and-gitops-in-minutes-b3ca33171209)
+It has all started with this article: [Amazon EKS with Terraform and GitOps in minutes](https://medium.com/@sebolabs/aws-eks-with-terraform-and-gitops-in-minutes-b3ca33171209)
 
 ## Functionalities
 The following functionalities and capabilities are currently covered:
@@ -30,6 +30,5 @@ Check it out [here](CHANGELOG.md)
 ## Versions
 The following versions are currently set:
 * Terraform: latest 1.3
-* Terraform AWS provider: 4.45
+* Terraform AWS provider: 4.51
 * EKS cluster: 1.23
-
