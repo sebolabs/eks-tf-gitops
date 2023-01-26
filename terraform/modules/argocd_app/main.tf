@@ -67,7 +67,12 @@ resource "helm_release" "argocd_application" {
     type = "auto"
   }
 
-  # Destination Config.
+  set {
+    name  = "source.helm.envValueFile"
+    value = "values-${var.environment}.yaml"
+    type  = "string"
+  }
+
   set {
     name  = "destination.server"
     value = each.value.destination
@@ -75,7 +80,6 @@ resource "helm_release" "argocd_application" {
   }
 
   values = [
-    # Application ignoreDifferences
     yamlencode({
       "ignoreDifferences" = lookup(each.value, "ignoreDifferences", [])
     })
