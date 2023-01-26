@@ -64,11 +64,11 @@ startrek_argocd_apps = {
 # STARWARS
 #
 starwars_argocd_apps = {
-  starwars = {
+  jedi = {
     project         = "sebolabs-test" # TODO: provide (must match var.argocd_project_name)
-    namespace       = "test-starwars" # TODO: provide (must start with <environment>- prefix)
+    namespace       = "test-jedi" # TODO: provide (must start with <environment>- prefix)
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
     target_revision = "starwars" # TODO: change once finished
-    path            = "starwars/apps/starwars"
+    path            = "starwars/apps/jedi"
   }
 }
