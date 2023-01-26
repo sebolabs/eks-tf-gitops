@@ -21,22 +21,22 @@ spec:
     namespace: {{ .Values.namespace }}
   syncPolicy:
     automated:
-      allowEmpty: false
-      prune: true
-      selfHeal: true
+      allowEmpty: false # allow application have empty resources
+      prune: true       # auto-delete resources on sync
+      selfHeal: true    # triggers sync on changes made to the live cluster
     retry:
       backoff:
-        duration: "10s"
-        factor: 2
-        maxDuration: "3m"
-      limit: 10
+        duration: "10s"   # retry backoff base duration
+        factor: 2         # multiplies the base duration after each failed retry
+        maxDuration: "3m" # max retry backoff duration
+      limit: 5            # max number of allowed sync retries
     syncOptions:
-      - "Validate=false"                    # disables resource validation (equivalent to 'kubectl apply --validate=false') (true by default).
-      - "CreateNamespace=true"              # Namespace Auto-Creation ensures that namespace specified as the application destination exists.
-      - "PrunePropagationPolicy=foreground" # Supported policies are background, foreground and orphan.
-      - "PruneLast=true"                    # Allow the ability for resource pruning to happen as a final, implicit wave of a sync operation.
-      - "RespectIgnoreDifferences=true"     # Respect ignored fields from '.Values.ignoreDifferences'.
+      - "Validate=false"                    # disables resource validation
+      - "CreateNamespace=true"              # ensures that namespace specified as the application destination exists
+      - "PrunePropagationPolicy=foreground" # owner object enter a delietion in progress state while dependents are being deleted
+      - "PruneLast=true"                    # allowsfor resource pruning to happen as a final, implicit wave of a sync operation
+      - "RespectIgnoreDifferences=true"     # respect ignored fields from '.Values.ignoreDifferences'
   {{- with .Values.ignoreDifferences }}
-  ignoreDifferences:
+  ignoreDifferences: # for ignoring differences of problematic resources
     {{- toYaml . | nindent 4 }}
   {{- end }}
