@@ -1,5 +1,5 @@
 module "eks" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.21.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.31.0"
 
   tags = tomap({ Name = local.aws_account_level_id })
 

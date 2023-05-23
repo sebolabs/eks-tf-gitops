@@ -1,5 +1,5 @@
 module "eks_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.21.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.31.0"
 
   depends_on = [module.eks, aws_security_group.argocd_alb_public_access_whitelist]
 

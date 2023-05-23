@@ -1,7 +1,7 @@
 # CHANGELOG
 
 ## Release 1.3.0
-* TODO: starwars
+* TODO: `StarWars` component added for multi-application concept with a single Helm chart template testing purposes
 * TODO: Application `argocd.argoproj.io/sync-wave` annotation support
 
 ## Release 1.2.0
