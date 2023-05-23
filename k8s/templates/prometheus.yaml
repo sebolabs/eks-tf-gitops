@@ -7,9 +7,9 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: {{ .Values.gloval.project }}
+  project: {{ .Values.global.project }}
   source:
-    repoURL: {{ .Values.global.srepoUrl }}
+    repoURL: {{ .Values.global.repoUrl }}
     path: k8s/add-ons/prometheus
     targetRevision: {{ .Values.global.targetRevision }}
     helm:
