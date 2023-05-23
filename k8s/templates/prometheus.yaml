@@ -33,7 +33,7 @@ spec:
       {{ end }}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: {{ .Values.prometheus.namespace }}
+    namespace: prometheus
   syncPolicy:
     automated:
       prune: true

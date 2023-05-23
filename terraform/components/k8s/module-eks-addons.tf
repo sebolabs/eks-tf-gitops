@@ -21,7 +21,8 @@ module "eks_addons" {
   enable_amazon_eks_coredns = true
   amazon_eks_coredns_config = { most_recent = true }
 
-  enable_amazon_eks_aws_ebs_csi_driver = false
+  enable_amazon_eks_aws_ebs_csi_driver = true #
+  amazon_eks_aws_ebs_csi_driver_config = { most_recent = true } #
 
   # ADD-ONS
   enable_argocd = true
