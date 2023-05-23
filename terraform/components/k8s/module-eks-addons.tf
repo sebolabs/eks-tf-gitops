@@ -59,6 +59,7 @@ module "eks_addons" {
         csiSecretsStoreProviderAwsEnabled = var.k8s_add_ons["enable_csi_secrets_store_provider_aws"]
         externalDnsEnabled                = var.k8s_add_ons["enable_external_dns"]
         metricsServerEnabled              = var.k8s_add_ons["enable_metrics_server"]
+        kubePrometheusStackEnabled        = var.k8s_add_ons["enable_kube_prometheus_stack"]
       }))
     }
 
@@ -110,4 +111,8 @@ module "eks_addons" {
   ## metrics-server
   enable_metrics_server      = var.k8s_add_ons["enable_metrics_server"]
   metrics_server_helm_config = { namespace = var.k8s_add_ons_default_namespace }
+
+  # kube-prometheus-stack
+  enable_kube_prometheus_stack      = var.k8s_add_ons["enable_kube_prometheus_stack"]
+  kube_prometheus_stack_helm_config = { namespace = "prometheus" }
 }

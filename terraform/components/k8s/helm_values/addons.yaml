@@ -29,7 +29,10 @@ csiSecretsStoreProviderAws:
 
 externalDns:
   enable: ${externalDnsEnabled}
-  serviceAccountName: external-dns-sa  # managed by Terraform
+  serviceAccountName: external-dns-sa # managed by Terraform
 
 metricsServer:
   enable: ${metricsServerEnabled}
+
+kubePrometheusStack:
+  enable: ${kubePrometheusStackEnabled}
