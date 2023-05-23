@@ -36,3 +36,7 @@ metricsServer:
 
 kubePrometheusStack:
   enable: ${kubePrometheusStackEnabled}
+
+prometheus:
+  enable: ${prometheusEnabled}
+  serviceAccountName: amp-ingest # managed by Terraform

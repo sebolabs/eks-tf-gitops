@@ -60,6 +60,7 @@ module "eks_addons" {
         externalDnsEnabled                = var.k8s_add_ons["enable_external_dns"]
         metricsServerEnabled              = var.k8s_add_ons["enable_metrics_server"]
         kubePrometheusStackEnabled        = var.k8s_add_ons["enable_kube_prometheus_stack"]
+        prometheusEnabled                 = var.k8s_add_ons["enable_prometheus"]
       }))
     }
 
@@ -115,4 +116,11 @@ module "eks_addons" {
   # kube-prometheus-stack
   enable_kube_prometheus_stack      = var.k8s_add_ons["enable_kube_prometheus_stack"]
   kube_prometheus_stack_helm_config = { namespace = "prometheus" }
+
+  # prometheus
+  enable_prometheus                    = var.k8s_add_ons["enable_prometheus"]
+  prometheus_helm_config               = { namespace = "prometheus" }
+  enable_amazon_prometheus             = var.k8s_add_ons["enable_prometheus"]
+  amazon_prometheus_workspace_endpoint = "https://aps-workspaces.eu-central-1.amazonaws.com/workspaces/ws-e8b21646-4bc1-48c9-b961-5e9680bcdd1f/" # TODO
+  amazon_prometheus_workspace_region   = var.aws_region
 }

@@ -8,3 +8,16 @@ awsForFluentBit:
     enabled: false
   elasticsearch:
     enabled: false
+#
+# prometheus
+# https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
+#
+prometheus:
+  server:
+    retention: 1h
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+    global:
+      scrape_interval: 15s
