@@ -62,6 +62,7 @@ module "eks_addons" {
         metricsServerEnabled              = var.k8s_add_ons["enable_metrics_server"]
         kubePrometheusStackEnabled        = var.k8s_add_ons["enable_kube_prometheus_stack"]
         prometheusEnabled                 = var.k8s_add_ons["enable_prometheus"]
+        grafanaEnabled                    = var.k8s_add_ons["enable_grafana"]
       }))
     }
 
@@ -121,7 +122,12 @@ module "eks_addons" {
   # prometheus
   enable_prometheus                    = var.k8s_add_ons["enable_prometheus"]
   prometheus_helm_config               = { namespace = "prometheus" }
-  enable_amazon_prometheus             = var.k8s_add_ons["enable_prometheus"]
+  enable_amazon_prometheus             = var.k8s_add_ons["enable_prometheus"] #
   amazon_prometheus_workspace_endpoint = "https://aps-workspaces.eu-central-1.amazonaws.com/workspaces/ws-e8b21646-4bc1-48c9-b961-5e9680bcdd1f/" # TODO
-  amazon_prometheus_workspace_region   = var.aws_region
+  amazon_prometheus_workspace_region   = var.aws_region #
+
+  # grafana
+  enable_grafana        = var.k8s_add_ons["enable_grafana"]
+  grafana_helm_config   = { namespace = "grafana" }
+  grafana_irsa_policies = []
 }

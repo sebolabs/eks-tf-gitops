@@ -40,3 +40,7 @@ kubePrometheusStack:
 prometheus:
   enable: ${prometheusEnabled}
   serviceAccountName: amp-ingest # managed by Terraform
+
+grafana:
+  enable: ${grafanaEnabled}
+  serviceAccountName: grafana # managed by Terraform

@@ -43,6 +43,7 @@ k8s_add_ons = {
   enable_metrics_server                 = true
   enable_kube_prometheus_stack          = false # not tested
   enable_prometheus                     = true
+  enable_grafana                        = true
 }
 
 logs_s3_bucket_arn = "???" # TODO: provide
