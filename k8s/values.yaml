@@ -21,3 +21,20 @@ prometheus:
         memory: 512Mi
     global:
       scrape_interval: 15s
+
+grafana:
+  persistence:
+    enabled: true
+  sidecar:
+    datasources:
+      enabled: true
+  plugins:
+    - aws-datasource-provisioner-app
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: Prometheus-In-Cluster
+        type: prometheus
+        access: proxy
+        url: http://prometheus-server.prometheus.svc.cluster.local
