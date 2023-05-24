@@ -2,3 +2,6 @@
 grafana:
   serviceAccount:
     create: false
+  grafana.ini:
+    auth:
+      sigv4_auth_enabled: true
