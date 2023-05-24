@@ -22,12 +22,17 @@ prometheus:
     global:
       scrape_interval: 15s
 
+#
+# grafana
+# https://github.com/grafana/helm-charts/blob/grafana-6.56.5/charts/grafana/values.yaml
+#
 grafana:
   labels:
     grafana_datasource: ""
     grafana_plugin: ""
   persistence:
     enabled: true
+    storageClassName: gp2
   sidecar:
     datasources:
       enabled: true
