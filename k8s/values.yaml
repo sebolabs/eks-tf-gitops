@@ -23,6 +23,9 @@ prometheus:
       scrape_interval: 15s
 
 grafana:
+  labels:
+    grafana_datasource: ""
+    grafana_plugin: ""
   persistence:
     enabled: true
   sidecar:

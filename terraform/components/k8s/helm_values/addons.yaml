@@ -44,13 +44,3 @@ prometheus:
 grafana:
   enable: ${grafanaEnabled}
   serviceAccountName: grafana # managed by Terraform
-  ingress:
-    enabled: true
-    annotations:
-      alb.ingress.kubernetes.io/group.name: ${addons_alb_group_name}
-      alb.ingress.kubernetes.io/load-balancer-attributes: routing.http.drop_invalid_header_fields.enabled=true,access_logs.s3.enabled=true,access_logs.s3.bucket=${addons_access_logs_s3_bucket},access_logs.s3.prefix=grafana
-    hosts:
-      - grafana.${addons_domain_name}
-    tls:
-      - hosts:
-        - grafana.${addons_domain_name}

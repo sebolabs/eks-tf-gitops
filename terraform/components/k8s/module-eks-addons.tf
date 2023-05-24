@@ -52,9 +52,6 @@ module "eks_addons" {
         addons_repoUrl               = var.argocd_k8s_addons_git_repo["url"]
         addons_targetRevision        = var.argocd_k8s_addons_git_repo["revision"]
         addons_namespace             = var.k8s_add_ons_default_namespace
-        addons_alb_group_name        = "add-ons"
-        addons_domain_name           = data.aws_route53_zone.public.name
-        addons_access_logs_s3_bucket = element(split(":::", var.logs_s3_bucket_arn), 1)
 
         awsCloudWatchMetricsEnabled       = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
         awsEfsCsiDriverEnabled            = var.k8s_add_ons["enable_aws_efs_csi_driver"]
