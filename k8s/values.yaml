@@ -28,6 +28,8 @@ grafana:
   sidecar:
     datasources:
       enabled: true
+    plugins:
+      enabled: true
   plugins:
     - aws-datasource-provisioner-app
   datasources:
@@ -38,3 +40,4 @@ grafana:
         type: prometheus
         access: proxy
         url: http://prometheus-server.prometheus.svc.cluster.local
+        isDefault: true
