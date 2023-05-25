@@ -33,14 +33,3 @@ externalDns:
 
 metricsServer:
   enable: ${metricsServerEnabled}
-
-kubePrometheusStack:
-  enable: ${kubePrometheusStackEnabled}
-
-prometheus:
-  enable: ${prometheusEnabled}
-  serviceAccountName: amp-ingest # managed by Terraform
-
-grafana:
-  enable: ${grafanaEnabled}
-  serviceAccountName: grafana # managed by Terraform

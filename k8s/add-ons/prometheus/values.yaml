@@ -1,3 +1,0 @@
-prometheus:
-  serviceAccount:
-    create: false

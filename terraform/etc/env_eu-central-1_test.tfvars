@@ -41,9 +41,6 @@ k8s_add_ons = {
   enable_csi_secrets_store_provider_aws = false
   enable_external_dns                   = true
   enable_metrics_server                 = true
-  enable_kube_prometheus_stack          = false # not tested
-  enable_prometheus                     = false #
-  enable_grafana                        = false #
 }
 
 logs_s3_bucket_arn = "???" # TODO: provide

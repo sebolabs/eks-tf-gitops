@@ -49,9 +49,9 @@ module "eks_addons" {
       path               = var.argocd_k8s_addons_git_repo["path"]
       add_on_application = true
       values             = yamldecode(templatefile("${path.module}/helm_values/addons.yaml", {
-        addons_repoUrl               = var.argocd_k8s_addons_git_repo["url"]
-        addons_targetRevision        = var.argocd_k8s_addons_git_repo["revision"]
-        addons_namespace             = var.k8s_add_ons_default_namespace
+        addons_repoUrl        = var.argocd_k8s_addons_git_repo["url"]
+        addons_targetRevision = var.argocd_k8s_addons_git_repo["revision"]
+        addons_namespace      = var.k8s_add_ons_default_namespace
 
         awsCloudWatchMetricsEnabled       = var.k8s_add_ons["enable_aws_cloudwatch_metrics"]
         awsEfsCsiDriverEnabled            = var.k8s_add_ons["enable_aws_efs_csi_driver"]
@@ -61,9 +61,6 @@ module "eks_addons" {
         csiSecretsStoreProviderAwsEnabled = var.k8s_add_ons["enable_csi_secrets_store_provider_aws"]
         externalDnsEnabled                = var.k8s_add_ons["enable_external_dns"]
         metricsServerEnabled              = var.k8s_add_ons["enable_metrics_server"]
-        kubePrometheusStackEnabled        = var.k8s_add_ons["enable_kube_prometheus_stack"]
-        prometheusEnabled                 = var.k8s_add_ons["enable_prometheus"]
-        grafanaEnabled                    = var.k8s_add_ons["enable_grafana"]
       }))
     }
 
@@ -115,20 +112,4 @@ module "eks_addons" {
   ## metrics-server
   enable_metrics_server      = var.k8s_add_ons["enable_metrics_server"]
   metrics_server_helm_config = { namespace = var.k8s_add_ons_default_namespace }
-
-  # kube-prometheus-stack
-  enable_kube_prometheus_stack      = var.k8s_add_ons["enable_kube_prometheus_stack"]
-  kube_prometheus_stack_helm_config = { namespace = "prometheus" }
-
-  # prometheus
-  enable_prometheus                    = var.k8s_add_ons["enable_prometheus"]
-  prometheus_helm_config               = { namespace = "prometheus" }
-  enable_amazon_prometheus             = var.k8s_add_ons["enable_prometheus"] #
-  amazon_prometheus_workspace_endpoint = "" #
-  amazon_prometheus_workspace_region   = var.aws_region #
-
-  # grafana
-  enable_grafana        = var.k8s_add_ons["enable_grafana"]
-  grafana_helm_config   = { namespace = "grafana" }
-  grafana_irsa_policies = []
 }
