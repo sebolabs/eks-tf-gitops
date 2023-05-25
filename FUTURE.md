@@ -6,3 +6,5 @@ Functionalities to be added/supported in the future (maybe!):
 - Deployment use-cases:
   - ArgoCD ApplicationSet
   - Gateway API with AWS VPC Lattice
+- Add-ons-dedicated node group
+- ...
