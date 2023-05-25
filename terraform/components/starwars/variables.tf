@@ -32,7 +32,7 @@ variable "aws_account_id" {
 
 # SPECIFIC
 variable "starwars_argocd_apps" {
-  type        = map
+  type        = map(any)
   description = "A map with ArgoCD applications configurations that belong to this component"
   default     = {}
 }

@@ -31,7 +31,6 @@ argocd_k8s_addons_git_repo = { # TODO: provide
   path     = "apps/add-ons"
 }
 
-# this should be aligned with the K8s configuration in /k8s/values.yaml
 k8s_add_ons = {
   enable_aws_cloudwatch_metrics         = false
   enable_aws_efs_csi_driver             = false
@@ -66,7 +65,7 @@ startrek_argocd_apps = {
 starwars_argocd_apps = {
   jedi = {
     project         = "sebolabs-test" # TODO: provide (must match var.argocd_project_name)
-    namespace       = "test-jedi" # TODO: provide (must start with <environment>- prefix)
+    namespace       = "test-jedi"     # TODO: provide (must start with <environment>- prefix)
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
     target_revision = "HEAD"
     path            = "apps/starwars/apps/jedi"
