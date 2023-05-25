@@ -1,6 +1,12 @@
 # CHANGELOG
 
 ## Release 1.3.0
+* VPC module version updated to 4.0.2
+* EKS Blueprints module version updated to 4.31.0
+* ArgoCD Helm chart version updated to 5.34.3 (~ ArgoCD v.2.7.2)
+* Terraform version updated to latest 1.4
+* EKS cluster Kubernetes version updated to 1.26
+* Add-ons k8s configuration moved to its dedidcated repo [sebolabs/eks-tf-gitops-k8s](https://github.com/sebolabs/eks-tf-gitops-k8s)
 * TODO: `StarWars` component added for multi-application concept with a single Helm chart template testing purposes
 * TODO: Application `argocd.argoproj.io/sync-wave` annotation support
 

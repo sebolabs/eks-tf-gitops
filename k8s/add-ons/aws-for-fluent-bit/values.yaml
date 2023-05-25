@@ -1,3 +1,0 @@
-aws-for-fluent-bit:
-  serviceAccount:
-    create: false

@@ -21,7 +21,7 @@ module "eks_addons" {
   enable_amazon_eks_coredns = true
   amazon_eks_coredns_config = { most_recent = true }
 
-  enable_amazon_eks_aws_ebs_csi_driver = true #
+  enable_amazon_eks_aws_ebs_csi_driver = true                   #
   amazon_eks_aws_ebs_csi_driver_config = { most_recent = true } #
 
   # ADD-ONS
@@ -48,7 +48,7 @@ module "eks_addons" {
       target_revision    = var.argocd_k8s_addons_git_repo["revision"]
       path               = var.argocd_k8s_addons_git_repo["path"]
       add_on_application = true
-      values             = yamldecode(templatefile("${path.module}/helm_values/addons.yaml", {
+      values = yamldecode(templatefile("${path.module}/helm_values/addons.yaml", {
         addons_repoUrl        = var.argocd_k8s_addons_git_repo["url"]
         addons_targetRevision = var.argocd_k8s_addons_git_repo["revision"]
         addons_namespace      = var.k8s_add_ons_default_namespace
@@ -104,7 +104,7 @@ module "eks_addons" {
   ## external-dns
   enable_external_dns            = var.k8s_add_ons["enable_external_dns"]
   external_dns_route53_zone_arns = [data.aws_route53_zone.public.arn]
-  external_dns_helm_config       = {
+  external_dns_helm_config = {
     # namespace = var.k8s_add_ons_default_namespace # ISSUE: https://github.com/aws-ia/terraform-aws-eks-blueprints/issues/1374
     zoneIdFilter = data.aws_route53_zone.public.zone_id
   }

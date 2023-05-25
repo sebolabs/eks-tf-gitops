@@ -16,19 +16,19 @@ The following functionalities and capabilities are currently covered:
     * KubeProxy
     * CoreDNS
     * VPC CNI Driver
+    * EBS CSI Driver
   * ArgoCD for GitOps
   * Additional add-ons controlled with ArgoCD where the following are enabled by default:
     * Cluster Autoscaler
     * AWS Load Balancer Controller
     * External DNS
     * Metrics Server
-    * FluentBit
 
 ## Change log
 Check it out [here](CHANGELOG.md)
 
 ## Versions
 The following versions are currently set:
-* Terraform: latest 1.3
-* Terraform AWS provider: 4.51
-* EKS cluster: 1.23
+* Terraform: latest 1.4
+* Terraform AWS provider: 4.67
+* EKS cluster: 1.26

@@ -26,9 +26,9 @@ eks_cluster_version = "1.26"
 argocd_helm_chart_version = "5.34.3"
 
 argocd_k8s_addons_git_repo = { # TODO: provide
-  url      = "https://github.com/sebolabs/eks-tf-gitops.git"
-  revision = "release-1-3-0"
-  path     = "k8s"
+  url      = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
+  revision = "HEAD"
+  path     = "apps/add-ons"
 }
 
 # this should be aligned with the K8s configuration in /k8s/values.yaml
@@ -56,7 +56,7 @@ startrek_argocd_apps = {
     namespace       = "test-startrek" # TODO: provide (must start with <environment>- prefix)
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
     target_revision = "HEAD"
-    path            = "startrek"
+    path            = "apps/startrek"
   }
 }
 
