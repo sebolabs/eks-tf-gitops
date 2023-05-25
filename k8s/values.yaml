@@ -26,26 +26,27 @@ prometheus:
 # grafana
 # https://github.com/grafana/helm-charts/blob/grafana-6.56.5/charts/grafana/values.yaml
 #
-grafana:
-  labels:
-    grafana_datasource: ""
-    grafana_plugin: ""
-  persistence:
-    enabled: true
-    storageClassName: gp2
-  sidecar:
-    datasources:
-      enabled: true
-    plugins:
-      enabled: true
-  plugins:
-    - aws-datasource-provisioner-app
-  datasources:
-    datasources.yaml:
-      apiVersion: 1
-      datasources:
-      - name: Prometheus-In-Cluster
-        type: prometheus
-        access: proxy
-        url: http://prometheus-server.prometheus.svc.cluster.local
-        isDefault: true
+# grafana:
+#   labels:
+#     grafana_datasource: ""
+#     grafana_plugin: ""
+#   persistence:
+#     enabled: true
+#     storageClassName: gp2
+#   sidecar:
+#     datasources:
+#       enabled: true
+#       label: grafana_datasource
+#     plugins:
+#       enabled: true
+#   plugins:
+#     - aws-datasource-provisioner-app
+#   datasources:
+#     datasources.yaml:
+#       apiVersion: 1
+#       datasources:
+#       - name: Prometheus-In-Cluster
+#         type: prometheus
+#         access: proxy
+#         url: http://prometheus-server.prometheus.svc.cluster.local
+#         isDefault: true

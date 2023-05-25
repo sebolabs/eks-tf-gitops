@@ -124,7 +124,7 @@ module "eks_addons" {
   enable_prometheus                    = var.k8s_add_ons["enable_prometheus"]
   prometheus_helm_config               = { namespace = "prometheus" }
   enable_amazon_prometheus             = var.k8s_add_ons["enable_prometheus"] #
-  amazon_prometheus_workspace_endpoint = "https://aps-workspaces.eu-central-1.amazonaws.com/workspaces/ws-e8b21646-4bc1-48c9-b961-5e9680bcdd1f/" # TODO
+  amazon_prometheus_workspace_endpoint = "" #
   amazon_prometheus_workspace_region   = var.aws_region #
 
   # grafana
