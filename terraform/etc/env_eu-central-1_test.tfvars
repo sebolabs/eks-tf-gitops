@@ -68,7 +68,7 @@ starwars_argocd_apps = {
     project         = "sebolabs-test" # TODO: provide (must match var.argocd_project_name)
     namespace       = "test-jedi" # TODO: provide (must start with <environment>- prefix)
     repo_url        = "https://github.com/sebolabs/eks-tf-gitops-k8s.git"
-    target_revision = "starwars" # TODO: change once finished
-    path            = "starwars/apps/jedi"
+    target_revision = "HEAD"
+    path            = "apps/starwars/apps/jedi"
   }
 }
