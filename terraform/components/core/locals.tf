@@ -24,6 +24,6 @@ locals {
   # SPECIFIC
   flow_log_destination_type   = var.vpc_flow_logs_s3_bucket_arn != null ? "s3" : "cloud-watch-logs"
   flow_log_destination_arn    = var.vpc_flow_logs_s3_bucket_arn != null ? var.vpc_flow_logs_s3_bucket_arn : ""
-  create_flow_log_cwlg        = var.vpc_flow_logs_s3_bucket_arn != null ? false : true
-  create_flow_log_cw_iam_role = var.vpc_flow_logs_s3_bucket_arn != null ? false : true
+  create_flow_log_cwlg        = var.vpc_enable_flow_log && var.vpc_flow_logs_s3_bucket_arn == null ? true : false
+  create_flow_log_cw_iam_role = var.vpc_enable_flow_log && var.vpc_flow_logs_s3_bucket_arn == null ? true : false
 }

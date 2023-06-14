@@ -16,7 +16,7 @@ module "vpc" {
 
   enable_dns_hostnames = true
 
-  enable_flow_log                                 = true
+  enable_flow_log                                 = var.vpc_enable_flow_log
   create_flow_log_cloudwatch_log_group            = local.create_flow_log_cwlg
   create_flow_log_cloudwatch_iam_role             = local.create_flow_log_cw_iam_role
   flow_log_destination_type                       = local.flow_log_destination_type

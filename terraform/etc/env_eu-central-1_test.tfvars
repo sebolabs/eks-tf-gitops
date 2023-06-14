@@ -18,6 +18,8 @@ vpc_cidr              = "10.83.0.0/16"
 public_subnets_cidrs  = ["10.83.1.0/24", "10.83.2.0/24"]
 private_subnets_cidrs = ["10.83.3.0/24", "10.83.4.0/24"]
 
+vpc_enable_flow_log = false
+
 #
 # K8S
 #

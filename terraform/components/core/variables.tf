@@ -52,6 +52,12 @@ variable "private_subnets_cidrs" {
   description = "A list with private subnets CIDR blocks"
 }
 
+variable "vpc_enable_flow_log" {
+  type        = bool
+  description = "Whether to enable VPC flow logs"
+  default     = true
+}
+
 variable "vpc_flow_logs_retention_days" {
   type        = number
   description = "The number of days VPC flow logs should be retained"
